@@ -1,22 +1,47 @@
 <?php
-session_start();
 
-$Connection = mysqli_connect("localhost", "root", "", "dbpanel");
+$host = 'localhost';
+$dbname = 'dbpanel';
+$dbuser = 'root';
+$dbpass = '';
 
-if (isset($_SESSION['Login'])) {
+try{
+    $dsn = "mysql:host=$host;dbname=$dbname;charest=utf8mb4";
 
-    $Username = $_SESSION['Login'];
+    $options = [
+        PDO::ATTR_ERRMODE =>
+        PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE =>
+        PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ];
 
-    mysqli_query(
-        $Connection,
-        "DELETE FROM tblusers WHERE UserName='$Username'"
-    );
 
-    session_unset();
-    session_destroy();
+
+$pdo = new PDO(
+    $dsn,$dbuser,$dbpass,$options
+);
+
+print("connected to database successfully");
+
 }
 
-mysqli_close($Connection);
+catch(PDOException $e)
+{
+    error_log("database error ...".
+    $e->getmessage());
+    die("database connection field");
+}
+
+$stmt = $pdo->prepar("DELETE FROM tblusers WHERE UserID = :id");
+
+$stmt->execute([
+    'id' => $useridToDelete
+]);
+
+
+
+
 
 echo "<script>
 alert('حساب کاربری با موفقیت حذف شد.');
