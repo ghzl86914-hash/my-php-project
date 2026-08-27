@@ -24,7 +24,7 @@ $pdo = new PDO(
     $dsn,$dbuser,$dbpass,$options
 );
 
-print("connected to database successfully");
+//print("connected to database successfully");
 
 }
 
@@ -38,23 +38,21 @@ if (isset($_SESSION['Login'])) {
 
     $Username = $_SESSION['Login'];
 
-    echo "$Username";
+    $stmt = $pdo->prepare("DELETE FROM tblusers WHERE UserID = :username");
 
-    // $stmt = $pdo->prepare("DELETE FROM tblusers WHERE UserID = :username");
-
-    // $stmt->execute([
-    //     'username' => $Username
-    // ]);
-    // session_unset();
-    // session_destroy();
+    $stmt->execute([
+        'username' => $Username
+    ]);
+    session_unset();
+    session_destroy();
 
 }
 
 
 
-// echo "<script>
-// alert('حساب کاربری با موفقیت حذف شد.');
-// window.location='index.php';
-// </script>";
+echo "<script>
+alert('حساب کاربری با موفقیت حذف شد.');
+window.location='index.php';
+</script>";
 
 exit();
