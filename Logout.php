@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $host = 'localhost';
 $dbname = 'dbpanel';
 $dbuser = 'root';
@@ -32,14 +34,19 @@ catch(PDOException $e)
     $e->getmessage());
     die("database connection field");
 }
+if (isset($_SESSION['Login'])) {
 
-$stmt = $pdo->prepar("DELETE FROM tblusers WHERE UserID = :id");
+    $Username = $_SESSION['Login'];
 
-$stmt->execute([
-    'id' => $useridToDelete
-]);
+    $stmt = $pdo->prepar("DELETE FROM tblusers WHERE UserID = :username");
 
+    $stmt->execute([
+        'username' => $Username
+    ]);
+    session_unset();
+    session_destroy();
 
+}
 
 
 
