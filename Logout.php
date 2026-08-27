@@ -38,7 +38,7 @@ if (isset($_SESSION['Login'])) {
 
     $Username = $_SESSION['Login'];
 
-    echo $Username;
+    echo "$Username";
 
     // $stmt = $pdo->prepare("DELETE FROM tblusers WHERE UserID = :username");
 
