@@ -38,7 +38,7 @@ if (isset($_SESSION['Login'])) {
 
     $Username = $_SESSION['Login'];
 
-    $stmt = $pdo->prepare("DELETE FROM tblusers WHERE UserID = :username");
+    $stmt = $pdo->prepare("DELETE FROM tblusers WHERE UserName = :username");
 
     $stmt->execute([
         'username' => $Username
