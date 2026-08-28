@@ -52,6 +52,9 @@ if (isset($_POST['btnUpdate'])) {
     // اگر خطایی نبود، آپدیت کن
     if (count($Errors) == 0) {
 
+        try{
+
+        }
         if (!empty($NewPassword)) {
             $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
 
@@ -99,6 +102,10 @@ if (isset($_POST['btnUpdate'])) {
         if ($Update) {
             $_SESSION['Login'] = $UserName;
             echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
+        }
+        catch(){
+            
+        }
             // اطلاعات جدید رو دوباره بگیر
             // $Select = mysqli_query($Connection, "SELECT * FROM tblusers WHERE UserName = '$UserName'");
             // $User = mysqli_fetch_assoc($Select);
