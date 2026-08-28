@@ -100,9 +100,9 @@ if (isset($_POST['btnUpdate'])) {
             $_SESSION['Login'] = $UserName;
             echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
             // اطلاعات جدید رو دوباره بگیر
-            $Select = mysqli_query($Connection, "SELECT * FROM tblusers WHERE UserName = '$UserName'");
-            $User = mysqli_fetch_assoc($Select);
-            $CurrentUserName = $UserName;
+            // $Select = mysqli_query($Connection, "SELECT * FROM tblusers WHERE UserName = '$UserName'");
+            // $User = mysqli_fetch_assoc($Select);
+            // $CurrentUserName = $UserName;
         } else {
             $Errors[] = "خطا در ذخیره اطلاعات: " . mysqli_error($Connection);
         }
