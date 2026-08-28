@@ -12,8 +12,12 @@ $CurrentUserName = $_SESSION['Login'];
 $Errors = [];
 
 // گرفتن اطلاعات کاربر
-$stmt = $pdo->prepare("SELECT * FROM tblusers WHERE UserName = '$CurrentUserName'");
+$stmt = $pdo->prepare("SELECT * FROM tblusers WHERE UserName = ':CurrentUserName'");
 $User = $stmt;
+
+$stmt->execute([
+    'UserName' => $CurrentUserName
+]);
 
 if (!$User) {
     die("کاربر پیدا نشد");
