@@ -44,7 +44,7 @@ if (isset($_POST['btnUpdate'])) {
     if (!empty($NewPassword)) {
         if (empty($CurrentPassword)) {
             $Errors[] = "برای تغییر رمز، باید رمز فعلی را وارد کنید";
-        } elseif (!password_verify($CurrentPassword, $User['UserName'])) {
+        } elseif (!password_verify($CurrentPassword, $User['Password'])) {
             $Errors[] = "رمز فعلی اشتباه است";
         }
     }
@@ -73,7 +73,7 @@ if (isset($_POST['btnUpdate'])) {
                 $PhoneNumber,
                 $Address,
                 $Password,
-                $UserName
+                $User['Password']
             ]);
         } else {
             $Update = mysqli_query(
