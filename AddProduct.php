@@ -54,19 +54,16 @@ if (isset($_POST['btnAddProduct'])) {
     if (count($Errors) == 0) {
 
         try{
-                $stmt = $pdo->prepare("INSERT INTO tblproducts (UserName, ProductTitle, PriceProduct, ProductImageName)
-             VALUES (:CurrentUserName, :Title, :Price, :ImageName)"
+            $stmt = $pdo->prepare("INSERT INTO tblproducts (UserName, ProductTitle, PriceProduct, ProductImageName)
+             VALUES (:CurrentUserName, :Title, :Price, :ImageName)");
 
-             
-            
-                );
-                $stmt->execute([
+            $stmt->execute([
 
-                        'CurrentUserName' => $CurrentUserName,
-                        'Title' => $Title,
-                        'Price' => $Price,
-                        'ImageName' => $ImageName
-                    ]);
+                    'CurrentUserName' => $CurrentUserName,
+                    'Title' => $Title,
+                    'Price' => $Price,
+                    'ImageName' => $ImageName
+                ]);
         }
         catch(PDOException $e)
         {
