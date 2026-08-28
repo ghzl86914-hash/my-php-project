@@ -25,7 +25,8 @@ if (!$User) {
 }
 
 // وقتی فرم ارسال شد
-if (isset($_POST['btnUpdate'])) {
+if (isset($_POST['btnUpdate'])) 
+{
 
     $UserName = trim($_POST['UserName']);
     $FirstNameAndLastName = trim($_POST['FirstNameAndLastName']);
@@ -50,7 +51,8 @@ if (isset($_POST['btnUpdate'])) {
     }
 
     // اگر خطایی نبود، آپدیت کن
-    if (count($Errors) == 0) {
+    if (count($Errors) == 0) 
+    {
 
         try{
                 if (!empty($NewPassword)) 
@@ -105,22 +107,19 @@ if (isset($_POST['btnUpdate'])) {
                     echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
                 
         
-        }
-        
-        
-        catch(PDOException $e)
-{
-    $Errors[] = "خطا در ذخیره اطلاعات: " . mysqli_error($Connection);
-}
+            }
+            catch(PDOException $e)
+            {
+                $Errors[] = "خطا در ذخیره اطلاعات: " . mysqli_error($Connection);
+            }
             // اطلاعات جدید رو دوباره بگیر
             // $Select = mysqli_query($Connection, "SELECT * FROM tblusers WHERE UserName = '$UserName'");
             // $User = mysqli_fetch_assoc($Select);
             // $CurrentUserName = $UserName;
-        }  {
-            
-        }
-    }
+    }     
 }
+
+
 ?>
 <!DOCTYPE html>
 <html>
