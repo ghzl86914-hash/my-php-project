@@ -57,12 +57,12 @@ if (isset($_POST['btnUpdate'])) {
 
             $Update = $pdo->prepare(
                 "UPDATE tblusers SET
-                    UserName = ?,
-                    FirstNameAndLastName = ?,
-                    Email = ?,
-                    PhoneNumber = ?,
-                    Address = ?,
-                    Password = ?
+                    `UserName` = ?,
+                    `FirstNameAndLastName` = ?,
+                    `Email` = ?,
+                    `PhoneNumber` = ?,
+                    `Address` = ?,
+                    `Password` = ?
                  WHERE UserName = ?"
             );
 
