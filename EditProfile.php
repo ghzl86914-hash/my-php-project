@@ -6,18 +6,14 @@ if (!isset($_SESSION['Login'])) {
     exit();
 }
 
-$Connection = mysqli_connect("localhost", "root", "", "dbpanel");
-
-if (!$Connection) {
-    die("خطا در اتصال: " . mysqli_connect_error());
-}
+require "db.php";
 
 $CurrentUserName = $_SESSION['Login'];
 $Errors = [];
 
 // گرفتن اطلاعات کاربر
-$Select = mysqli_query($Connection, "SELECT * FROM tblusers WHERE UserName = '$CurrentUserName'");
-$User = mysqli_fetch_assoc($Select);
+$stmt = $pdo->prepare("SELECT * FROM tblusers WHERE UserName = '$CurrentUserName'");
+$User = $stmt;
 
 if (!$User) {
     die("کاربر پیدا نشد");
@@ -26,11 +22,11 @@ if (!$User) {
 // وقتی فرم ارسال شد
 if (isset($_POST['btnUpdate'])) {
 
-    $UserName = mysqli_real_escape_string($Connection, trim($_POST['UserName']));
-    $FirstNameAndLastName = mysqli_real_escape_string($Connection, trim($_POST['FirstNameAndLastName']));
-    $Email = mysqli_real_escape_string($Connection, trim($_POST['Email']));
-    $PhoneNumber = mysqli_real_escape_string($Connection, trim($_POST['PhoneNumber']));
-    $Address = mysqli_real_escape_string($Connection, trim($_POST['Address']));
+    $UserName = trim($_POST['UserName']);
+    $FirstNameAndLastName = trim($_POST['FirstNameAndLastName']);
+    $Email =  trim($_POST['Email']);
+    $PhoneNumber = trim($_POST['PhoneNumber']);
+    $Address = trim($_POST['Address']);
     $CurrentPassword = $_POST['CurrentPassword'] ?? '';
     $NewPassword = $_POST['NewPassword'] ?? '';
 
