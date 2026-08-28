@@ -6,11 +6,7 @@ if (!isset($_SESSION['Login'])) {
     exit();
 }
 
-$Connection = mysqli_connect("localhost", "root", "", "dbpanel");
-
-if (!$Connection) {
-    die("خطا در اتصال به دیتابیس");
-}
+require "db.php";
 
 $CurrentUserName = $_SESSION['Login'];
 $Errors = [];
