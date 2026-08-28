@@ -100,10 +100,10 @@ if (isset($_POST['btnUpdate'])) {
 
                     ]);
                 }
-                if ($Update) {
+                
                     $_SESSION['Login'] = $UserName;
                     echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
-                }
+                
         
         }
         
