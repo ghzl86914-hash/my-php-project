@@ -53,9 +53,7 @@ if (isset($_POST['btnUpdate'])) {
     if (count($Errors) == 0) {
 
         try{
-
-        }
-        if (!empty($NewPassword)) {
+if (!empty($NewPassword)) {
             $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
 
             $Update = $pdo->prepare(
@@ -103,6 +101,10 @@ if (isset($_POST['btnUpdate'])) {
             $_SESSION['Login'] = $UserName;
             echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
         }
+        
+        }
+        
+        
         catch(){
             
         }
