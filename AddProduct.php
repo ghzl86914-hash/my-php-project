@@ -53,24 +53,24 @@ if (isset($_POST['btnAddProduct'])) {
     // اگر خطایی نبود، ذخیره کن
     if (count($Errors) == 0) {
 
-        $stmt = $pdo->prepare("INSERT INTO tblproducts (UserName, ProductTitle, PriceProduct, ProductImageName)
+        try{
+                $stmt = $pdo->prepare("INSERT INTO tblproducts (UserName, ProductTitle, PriceProduct, ProductImageName)
              VALUES (:CurrentUserName, :Title, :Price, :ImageName)"
 
              
             
-        );
-        $stmt->execute([
+                );
+                $stmt->execute([
 
-                'CurrentUserName' => $CurrentUserName,
-                'Title' => $Title,
-                'Price' => $Price,
-                'ImageName' => $ImageName
-             ]);
-
-        if ($Insert) {
-            $Success = true;
-        } else {
-            $Errors[] = "خطا در ذخیره محصول: " . mysqli_error($Connection);
+                        'CurrentUserName' => $CurrentUserName,
+                        'Title' => $Title,
+                        'Price' => $Price,
+                        'ImageName' => $ImageName
+                    ]);
+        }
+        catch(PDOException $e)
+        {
+            $Errors[] = "خطا در ذخیره محصول: " . $e->getmessage();
         }
     }
 }
