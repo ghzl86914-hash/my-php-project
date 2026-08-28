@@ -18,6 +18,8 @@ $stmt->execute([
     'gazal' => $CurrentUserName
 ]);
 
+$User = $stmt->fetch();
+
 if (!$User) {
     die("کاربر پیدا نشد");
 }
