@@ -55,17 +55,26 @@ if (isset($_POST['btnUpdate'])) {
         if (!empty($NewPassword)) {
             $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
 
-            $Update = mysqli_query(
-                $Connection,
+            $Update = $pdo->prepare(
                 "UPDATE tblusers SET
-                    UserName = '$UserName',
-                    FirstNameAndLastName = '$FirstNameAndLastName',
-                    Email = '$Email',
-                    PhoneNumber = '$PhoneNumber',
-                    Address = '$Address',
-                    Password = '$HashedPassword'
-                 WHERE UserName = '$CurrentUserName'"
+                    UserName = ?,
+                    FirstNameAndLastName = ?,
+                    Email = ?,
+                    PhoneNumber = ?,
+                    Address = ?,
+                    Password = ?
+                 WHERE UserName = ?"
             );
+
+            $Update->execute([
+                $UserName,
+                $FirstNameAndLastName,
+                $Email,
+                $PhoneNumber,
+                $Address,
+                $Password,
+                $UserName
+            ]);
         } else {
             $Update = mysqli_query(
                 $Connection,
