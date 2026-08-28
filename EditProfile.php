@@ -88,13 +88,13 @@ if (isset($_POST['btnUpdate'])) {
 
             $Update->execute([
                 $UserName,
-                    $FirstNameAndLastName,
-                    $Email,
-                    $PhoneNumber,
-                    $Address,
-                  $UserName    
-            
-       ]) ;
+                $FirstNameAndLastName,
+                $Email,
+                $PhoneNumber,
+                $Address,
+                $User['UserName']
+
+            ]);
         }
         if ($Update) {
             $_SESSION['Login'] = $UserName;
