@@ -55,6 +55,14 @@ if (isset($_POST['btnAddProduct'])) {
 
         $stmt = $pdo->prepare("INSERT INTO tblproducts (UserName, ProductTitle, PriceProduct, ProductImageName)
              VALUES (:CurrentUserName, :Title, :Price, :ImageName)"
+
+             $stmt->execute([
+
+                'CurrentUserName' => $CurrentUserName
+                'Title' => $Title
+                'Price' => $Price
+                'ImageName' => $ImageName
+             ])
             
         );
 
