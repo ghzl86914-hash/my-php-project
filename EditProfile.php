@@ -53,54 +53,57 @@ if (isset($_POST['btnUpdate'])) {
     if (count($Errors) == 0) {
 
         try{
-if (!empty($NewPassword)) {
-            $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
+                if (!empty($NewPassword)) 
+                {
+                    $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
 
-            $Update = $pdo->prepare(
-                "UPDATE tblusers SET
-                    `UserName` = ?,
-                    `FirstNameAndLastName` = ?,
-                    `Email` = ?,
-                    `PhoneNumber` = ?,
-                    `Address` = ?,
-                    `Password` = ?
-                 WHERE `UserName` = ?"
-            );
+                    $Update = $pdo->prepare(
+                        "UPDATE tblusers SET
+                            `UserName` = ?,
+                            `FirstNameAndLastName` = ?,
+                            `Email` = ?,
+                            `PhoneNumber` = ?,
+                            `Address` = ?,
+                            `Password` = ?
+                        WHERE `UserName` = ?"
+                    );
 
-            $Update->execute([
-                $UserName,
-                $FirstNameAndLastName,
-                $Email,
-                $PhoneNumber,
-                $Address,
-                $Password,
-                $User['UserName']
-            ]);
-        } else {
-            $Update = $pdo->prepare(
-                "UPDATE tblusers SET
-                    `UserName` = ?,
-                    `FirstNameAndLastName` = ?,
-                    `Email` = ?,
-                    `PhoneNumber` = ?,
-                    `Address` = ?
-                 WHERE `UserName` = ?"
-            );
+                    $Update->execute([
+                        $UserName,
+                        $FirstNameAndLastName,
+                        $Email,
+                        $PhoneNumber,
+                        $Address,
+                        $Password,
+                        $User['UserName']
+                    ]);
+                } 
+                else 
+                {
+                    $Update = $pdo->prepare(
+                        "UPDATE tblusers SET
+                            `UserName` = ?,
+                            `FirstNameAndLastName` = ?,
+                            `Email` = ?,
+                            `PhoneNumber` = ?,
+                            `Address` = ?
+                        WHERE `UserName` = ?"
+                    );
 
-            $Update->execute([
-                $UserName,
-                $FirstNameAndLastName,
-                $Email,
-                $PhoneNumber,
-                $Address,
-                $User['UserName']
+                    $Update->execute([
+                        $UserName,
+                        $FirstNameAndLastName,
+                        $Email,
+                        $PhoneNumber,
+                        $Address,
+                        $User['UserName']
 
-            ]);
-        }
-        if ($Update) {
-            $_SESSION['Login'] = $UserName;
-            echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
-        }
+                    ]);
+                }
+                if ($Update) {
+                    $_SESSION['Login'] = $UserName;
+                    echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
+                }
         
         }
         
