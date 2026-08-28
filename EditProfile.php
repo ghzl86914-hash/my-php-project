@@ -76,18 +76,26 @@ if (isset($_POST['btnUpdate'])) {
                 $User['UserName']
             ]);
         } else {
-            $Update = mysqli_query(
-                $Connection,
+            $Update = $pdo->prepare(
                 "UPDATE tblusers SET
-                    UserName = '$UserName',
-                    FirstNameAndLastName = '$FirstNameAndLastName',
-                    Email = '$Email',
-                    PhoneNumber = '$PhoneNumber',
-                    Address = '$Address'
-                 WHERE UserName = '$CurrentUserName'"
+                    `UserName` = ?,
+                    `FirstNameAndLastName` = ?,
+                    `Email` = ?,
+                    `PhoneNumber` = ?,
+                    `Address` = ?
+                 WHERE `UserName` = ?"
             );
-        }
 
+            $Update->execute([
+                $UserName,
+                    $FirstNameAndLastName,
+                    $Email,
+                    $PhoneNumber,
+                    $Address,
+                  $UserName    
+            
+       ]) ;
+        }
         if ($Update) {
             $_SESSION['Login'] = $UserName;
             echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
