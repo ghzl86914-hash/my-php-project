@@ -110,9 +110,7 @@ if (isset($_POST['btnUpdate'])) {
         
         catch(PDOException $e)
 {
-error_log("database error ...".
-$e->getmessage());
-die("database connection field");
+
 }
             // اطلاعات جدید رو دوباره بگیر
             // $Select = mysqli_query($Connection, "SELECT * FROM tblusers WHERE UserName = '$UserName'");
