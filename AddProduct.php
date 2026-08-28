@@ -53,11 +53,9 @@ if (isset($_POST['btnAddProduct'])) {
     // اگر خطایی نبود، ذخیره کن
     if (count($Errors) == 0) {
 
-        $Insert = mysqli_query(
-            $Connection,
-            "INSERT INTO tblproducts (UserName, ProductTitle, PriceProduct, ProductImageName)
-             VALUES ('$CurrentUserName', '$Title', '$Price', '$ImageName')"
-        );
+        $stmt = $pdo->prepare(
+            
+        )
 
         if ($Insert) {
             $Success = true;
