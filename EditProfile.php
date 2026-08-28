@@ -73,7 +73,7 @@ if (isset($_POST['btnUpdate'])) {
                 $PhoneNumber,
                 $Address,
                 $Password,
-                $User['Password']
+                $User['UserName']
             ]);
         } else {
             $Update = mysqli_query(
