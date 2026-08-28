@@ -63,7 +63,7 @@ if (isset($_POST['btnUpdate'])) {
                     `PhoneNumber` = ?,
                     `Address` = ?,
                     `Password` = ?
-                 WHERE UserName = ?"
+                 WHERE `UserName` = ?"
             );
 
             $Update->execute([
