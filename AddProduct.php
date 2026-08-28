@@ -54,7 +54,7 @@ if (isset($_POST['btnAddProduct'])) {
     if (count($Errors) == 0) {
 
         $stmt = $pdo->prepare("INSERT INTO tblproducts (UserName, ProductTitle, PriceProduct, ProductImageName)
-             VALUES ('$CurrentUserName', '$Title', '$Price', '$ImageName')"
+             VALUES (:CurrentUserName, :Title, :Price, :ImageName)"
             
         )
 
