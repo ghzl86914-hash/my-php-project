@@ -12,10 +12,10 @@ $CurrentUserName = $_SESSION['Login'];
 $Errors = [];
 
 // گرفتن اطلاعات کاربر
-$stmt = $pdo->prepare("SELECT * FROM tblusers WHERE UserName = ':CurrentUserName'");
+$stmt = $pdo->prepare("SELECT * FROM tblusers WHERE UserName = ':gazal'");
 
 $stmt->execute([
-    'CurrentUserName' => $CurrentUserName
+    'gazal' => $CurrentUserName
 ]);
 
 if (!$User) {
