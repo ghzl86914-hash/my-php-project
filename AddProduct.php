@@ -15,7 +15,7 @@ $Success = false;
 if (isset($_POST['btnAddProduct'])) {
 
     $Title = trim($_POST['ProductTitle']);
-    $Price = mysqli_real_escape_string($Connection, trim($_POST['PriceProduct']));
+    $Price = trim($_POST['PriceProduct']);
     $ImageName = '';
 
     // اعتبارسنجی
