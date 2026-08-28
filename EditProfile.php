@@ -13,10 +13,9 @@ $Errors = [];
 
 // گرفتن اطلاعات کاربر
 $stmt = $pdo->prepare("SELECT * FROM tblusers WHERE UserName = ':CurrentUserName'");
-$User = $stmt;
 
 $stmt->execute([
-    'UserName' => $CurrentUserName
+    'CurrentUserName' => $CurrentUserName
 ]);
 
 if (!$User) {
