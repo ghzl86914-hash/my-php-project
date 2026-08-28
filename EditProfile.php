@@ -110,7 +110,7 @@ if (isset($_POST['btnUpdate']))
             }
             catch(PDOException $e)
             {
-                $Errors[] = "خطا در ذخیره اطلاعات: " . mysqli_error($Connection);
+                $Errors[] = "خطا در ذخیره اطلاعات: " . $e->getmessage();
             }
             // اطلاعات جدید رو دوباره بگیر
             // $Select = mysqli_query($Connection, "SELECT * FROM tblusers WHERE UserName = '$UserName'");
