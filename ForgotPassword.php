@@ -22,7 +22,7 @@ if (isset($_POST['checkEmail'])) {
             $Email
         ]);
 
-        $User = mysqli_fetch_assoc($Select);
+        $User = $Select->fetch();
 
         if ($User) {
             // ایمیل پیدا شد → برو مرحله بعد
