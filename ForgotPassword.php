@@ -74,19 +74,12 @@ if (isset($_POST['resetPassword'])) {
         ]);
 
         
-
-        ($Update) 
             unset($_SESSION['reset_email']);
             $Success = true;
             $Step = 3;
         
-
-        
-            
             catch(PDOException $e){
             
-
-          
             $Errors[] = "خطا در تغییر رمز عبور" . $e->getmessage();
 
             $Step = 2;
