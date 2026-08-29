@@ -24,14 +24,21 @@ if (isset($_POST['checkEmail'])) {
 
         $User = $Select->fetch();
 
-        if ($User) {
+        try {
+            if ($User) {
             // ایمیل پیدا شد → برو مرحله بعد
             $_SESSION['reset_email'] = $Email;
             $Step = 2;
         } else {
             $Errors[] = "هیچ کاربری با این ایمیل پیدا نشد";
         }
-    }
+        
+        }
+
+        }
+    
+        
+        
 }
 
 // مرحله دوم: ثبت رمز جدید
