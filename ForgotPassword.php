@@ -63,27 +63,24 @@ if (isset($_POST['resetPassword'])) {
         $Step = 2;
     } else {
         $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
-    try{
-        $Update = $pdo->prepare(
-            
-                "UPDATE tblusers SET Password = '$HashedPassword' WHERE Email = ?"
-        );
+    try
+    {
+        $Update = $pdo->prepare("UPDATE tblusers SET Password = '$HashedPassword' WHERE Email = ?");
 
         $Update->execute([
             $Email
         ]);
 
+        unset($_SESSION['reset_email']);
+        $Success = true;
+        $Step = 3;
+    }
         
-            unset($_SESSION['reset_email']);
-            $Success = true;
-            $Step = 3;
-        
-            catch(PDOException $e){
-            
-            $Errors[] = "خطا در تغییر رمز عبور" . $e->getmessage();
+    catch(PDOException $e)
+    {
+        $Errors[] = "خطا در تغییر رمز عبور" . $e->getmessage();
 
-            $Step = 2;
-        }
+        $Step = 2;
     }
 }
 ?>
