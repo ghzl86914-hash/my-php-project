@@ -17,27 +17,26 @@ if (isset($_POST['checkEmail'])) {
         $Errors[] = "ایمیل وارد شده معتبر نیست";
     } else {
 
-        try{
+        try
+        {
 
-        $Select = $pdo->prepare("SELECT * FROM tblusers WHERE Email = ?");
+            $Select = $pdo->prepare("SELECT * FROM tblusers WHERE Email = ?");
 
-        $Select->execute([
-            $Email
-        ]);
+            $Select->execute([
+                $Email
+            ]);
 
-        $User = $Select->fetch();
+            $User = $Select->fetch();
 
-        
-            if ($User) {
             // ایمیل پیدا شد → برو مرحله بعد
             $_SESSION['reset_email'] = $Email;
             $Step = 2;
-            }
-            catch(PDOException $e){ 
 
-            } else {
-            $Errors[] = "هیچ کاربری با این ایمیل پیدا نشد" . $e->getmessage();;
-        }
+        catch(PDOException $e)
+        { 
+
+
+            $Errors[] = "هیچ کاربری با این ایمیل پیدا نشد" . $e->getmessage();
         }
         
 
