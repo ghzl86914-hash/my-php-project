@@ -9,14 +9,19 @@ $Step = 1; // مرحله ۱: وارد کردن ایمیل | مرحله ۲: وا�
 $Email = '';
 
 if (isset($_POST['checkEmail'])) {
-    $Email = mysqli_real_escape_string($Connection, trim($_POST['Email']));
+    $Email = trim($_POST['Email']);
 
     if (empty($Email)) {
         $Errors[] = "ایمیل نمی‌تواند خالی باشد";
     } elseif (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
         $Errors[] = "ایمیل وارد شده معتبر نیست";
     } else {
-        $Select = mysqli_query($Connection, "SELECT * FROM tblusers WHERE Email = '$Email'");
+        $Select = $pdo->prepare("SELECT * FROM tblusers WHERE Email = '$Email'");
+
+        $Select->execute([
+           "`Email` = ?" 
+        ]);
+
         $User = mysqli_fetch_assoc($Select);
 
         if ($User) {
