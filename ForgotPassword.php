@@ -75,14 +75,14 @@ if (isset($_POST['resetPassword'])) {
 
         
 
-        ($Update) {
+        ($Update) 
             unset($_SESSION['reset_email']);
             $Success = true;
             $Step = 3;
-        }
+        
 
         
-            }
+            
             catch(PDOException $e){
             
 
