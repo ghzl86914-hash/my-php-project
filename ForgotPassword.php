@@ -63,9 +63,9 @@ if (isset($_POST['resetPassword'])) {
         $Step = 2;
     } else {
         $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
-
+    try{
         $Update = $pdo->prepare(
-            try{
+            
                 "UPDATE tblusers SET Password = '$HashedPassword' WHERE Email = ?"
         );
 
