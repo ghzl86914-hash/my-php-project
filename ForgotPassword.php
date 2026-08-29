@@ -1,11 +1,7 @@
 <?php
 session_start();
 
-$Connection = mysqli_connect("localhost", "root", "", "dbpanel");
-
-if (!$Connection) {
-    die("خطا در اتصال به دیتابیس");
-}
+require "db.php";
 
 $Errors = [];
 $Success = false;
