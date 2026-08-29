@@ -33,18 +33,18 @@ if (isset($_POST['checkEmail'])) {
             $_SESSION['reset_email'] = $Email;
             $Step = 2;
             }
-            
-        } else {
-            $Errors[] = "هیچ کاربری با این ایمیل پیدا نشد";
+            catch(PDOException $e){ 
+
+            } else {
+            $Errors[] = "هیچ کاربری با این ایمیل پیدا نشد" . $e->getmessage();;
         }
+        }
+        
 
         }
 
         }
     
-        
-        
-}
 
 // مرحله دوم: ثبت رمز جدید
 if (isset($_POST['resetPassword'])) {
