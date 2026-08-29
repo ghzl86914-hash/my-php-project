@@ -12,7 +12,7 @@ if (isset($_GET['back'])) {
     unset($_SESSION['login_locked_until']);
 }
 
-$Connection = mysqli_connect("localhost", "root", "", "dbpanel");
+require "db.php";
 
 $Errors = [];
 $Username = '';
@@ -55,17 +55,19 @@ if (isset($_POST['login']) && empty($Errors)) {
 
     if (count($Errors) == 0) {
 
+        try{
+        $Select = $pdo->prepare(
+            "SELECT UserID, UserName, Password FROM tblusers WHERE UserName = ?");
+            
+        $Select->execute([
+            $Username
+        ]);
 
-        $Select = mysqli_query(
-            $Connection,
-            "SELECT UserID, UserName, Password FROM tblusers WHERE UserName = '$Username'"
-        );
+
+        $ResultSelect = $Select->fetch();
 
 
-        $ResultSelect = mysqli_fetch_assoc($Select);
-
-
-        if ($ResultSelect && password_verify($Password, $ResultSelect['Password'])) {
+        ($ResultSelect && password_verify($Password, $ResultSelect['Password'])) 
 
 
             unset($_SESSION['login_attempts']);
@@ -78,31 +80,32 @@ if (isset($_POST['login']) && empty($Errors)) {
 
             echo "<script>window.location='UserPanel.php';</script>";
             exit();
-        } else {
-
-
-            if (!isset($_SESSION['login_attempts'])) {
-                $_SESSION['login_attempts'] = 0;
             }
+         catch (PDOException $e)
+         {
+
+
+             (!isset($_SESSION['login_attempts'])) 
+                $_SESSION['login_attempts'] = 0;
+            
 
 
             $_SESSION['login_attempts']++;
 
 
-            if ($_SESSION['login_attempts'] >= 2) {
+            ($_SESSION['login_attempts'] >= 2)
 
 
                 $_SESSION['login_locked_until'] = time() + 120;
 
-                $Errors[] = "رمز عبور اشتباه است. حساب شما به مدت ۲ دقیقه قفل شد.";
-            } else {
+                $Errors[] = "رمز عبور اشتباه است. حساب شما به مدت ۲ دقیقه قفل شد." . $e->getmessage();
 
-
-                $Errors[] = "نام کاربری یا رمز عبور اشتباه است. (تلاش " . $_SESSION['login_attempts'] . " از ۲)";
+                $Errors[] = "نام کاربری یا رمز عبور اشتباه است. (تلاش " . $_SESSION['login_attempts'] . " از ۲)" . $e->getmessage();
+                 }
             }
         }
-    }
-}
+    
+
 
 ?>
 
