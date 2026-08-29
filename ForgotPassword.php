@@ -16,7 +16,7 @@ if (isset($_POST['checkEmail'])) {
     } elseif (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
         $Errors[] = "ایمیل وارد شده معتبر نیست";
     } else {
-        $Select = $pdo->prepare("SELECT * FROM tblusers WHERE Email = '$Email'");
+        $Select = $pdo->prepare("SELECT * FROM tblusers WHERE Email = :Email");
 
         $Select->execute([
            "`Email` = ?" 
