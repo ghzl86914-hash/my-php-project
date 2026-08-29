@@ -16,6 +16,9 @@ if (isset($_POST['checkEmail'])) {
     } elseif (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
         $Errors[] = "ایمیل وارد شده معتبر نیست";
     } else {
+
+        try{
+
         $Select = $pdo->prepare("SELECT * FROM tblusers WHERE Email = ?");
 
         $Select->execute([
@@ -24,15 +27,17 @@ if (isset($_POST['checkEmail'])) {
 
         $User = $Select->fetch();
 
-        try {
+        
             if ($User) {
             // ایمیل پیدا شد → برو مرحله بعد
             $_SESSION['reset_email'] = $Email;
             $Step = 2;
+            }
+            
         } else {
             $Errors[] = "هیچ کاربری با این ایمیل پیدا نشد";
         }
-        
+
         }
 
         }
