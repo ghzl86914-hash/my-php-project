@@ -19,9 +19,7 @@ if (isset($_POST['checkEmail'])) {
         $Select = $pdo->prepare("SELECT * FROM tblusers WHERE Email = ?");
 
         $Select->execute([
-
-           $Email
-           
+            $Email
         ]);
 
         $User = mysqli_fetch_assoc($Select);
