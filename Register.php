@@ -57,20 +57,22 @@ if (isset($_POST['register'])) {
      `Email` = ?,
       `FirstNameAndLastName` = ?,
        `PhoneNumber` = ?, 
-       `Address` = ?)
+       `Address` = ?)");
     VALUES
     $Connection->execute([
+
+    $Username,
+    $Password,
+    $Email,
+    $FullName,
+    $PhoneNumber,
+    $Address
     ]);
-    '$Username',
-    '$Password',
-    '$Email',
-    '$FullName',
-    '$PhoneNumber',
-    '$Address'"
-        );
+    
+    
             
 
-        $UserID = mysqli_insert_id($Connection);
+        $UserID->lastInsertId();
 
         $_SESSION['Login'] = $UserID;
         $_SESSION['Username'] = $Username;
