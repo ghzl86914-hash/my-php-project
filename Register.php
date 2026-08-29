@@ -1,6 +1,6 @@
 <?php
 
-$Connection = mysqli_connect("localhost", "root", "", "dbpanel");
+require "db.php";
 
 $Errors = [];
 
@@ -13,12 +13,12 @@ $Address = '';
 
 if (isset($_POST['register'])) {
 
-    $Username = mysqli_real_escape_string($Connection, $_POST['username']);
-    $Password = mysqli_real_escape_string($Connection, $_POST['password']);
-    $Email = mysqli_real_escape_string($Connection, $_POST['email']);
-    $FullName = mysqli_real_escape_string($Connection, $_POST['fullname']);
-    $PhoneNumber = mysqli_real_escape_string($Connection, $_POST['phone']);
-    $Address = mysqli_real_escape_string($Connection, $_POST['address']);
+    $Username = $_POST['username'];
+    $Password = $_POST['password'];
+    $Email = $_POST['email'];
+    $FullName =  $_POST['fullname'];
+    $PhoneNumber = $_POST['phone'];
+    $Address = $_POST['address'];
 
     if (empty($Username)) {
         array_push($Errors, 'نام کاربری نمیتواند خالی باشد');
@@ -28,12 +28,16 @@ if (isset($_POST['register'])) {
         array_push($Errors, 'رمز عبور نمیتواند خالی باشد');
     }
 
-    $CheckUser = mysqli_query(
-        $Connection,
-        "SELECT UserID FROM tblusers WHERE Username='$Username'"
+    $CheckUser = $pdo->prepare(
+        "SELECT UserID FROM tblusers WHERE Username= ?"
     );
 
-    if (mysqli_num_rows($CheckUser) > 0) {
+    $CheckUser->execute([
+        $Username
+    ]);
+
+   $CheckUser->rowCount() > 0 {
+
         array_push($Errors, 'این نام کاربری قبلاً ثبت شده است. لطفاً وارد شوید.');
         foreach ($Errors as $Error) {
             echo $Error . "<br>";
@@ -47,18 +51,24 @@ if (isset($_POST['register'])) {
 
         $Password = password_hash($Password, PASSWORD_DEFAULT);
 
-        mysqli_query(
-            $Connection,
-            "INSERT INTO tblusers
-    (Username, Password, Email, FirstNameAndLastName, PhoneNumber, Address)
+            $Connection = $pdo->prepare("INSERT INTO tblusers
+    (`Username` = ?, 
+    `Password` = ?,
+     `Email` = ?,
+      `FirstNameAndLastName` = ?,
+       `PhoneNumber` = ?, 
+       `Address` = ?)
     VALUES
-    ('$Username',
+    $Connection->execute([
+    ]);
+    '$Username',
     '$Password',
     '$Email',
     '$FullName',
     '$PhoneNumber',
-    '$Address')"
+    '$Address'"
         );
+            
 
         $UserID = mysqli_insert_id($Connection);
 
