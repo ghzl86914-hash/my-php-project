@@ -52,15 +52,16 @@ if (isset($_POST['register'])) {
         $Password = password_hash($Password, PASSWORD_DEFAULT);
 
             $Connection = $pdo->prepare("INSERT INTO tblusers
+            (`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)
+            VALUES
     (`Username` = ?, 
     `Password` = ?,
      `Email` = ?,
       `FirstNameAndLastName` = ?,
        `PhoneNumber` = ?, 
        `Address` = ?)");
-    VALUES
-    $Connection->execute([
 
+    $Connection->execute([
     $Username,
     $Password,
     $Email,
