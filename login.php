@@ -39,7 +39,7 @@ if (isset($_SESSION['login_locked_until'])) {
 if (isset($_POST['login']) && empty($Errors)) {
 
 
-    $Username = mysqli_real_escape_string($Connection, $_POST['username']);
+    $Username = $_POST['username'];
     $Password = $_POST['password'];
 
 
