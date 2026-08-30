@@ -66,7 +66,7 @@ if (isset($_POST['register'])) {
     
             
 
-        $UserID->lastInsertId();
+        $UserID = $Connection->lastInsertId();
 
         $_SESSION['Login'] = $UserID;
         $_SESSION['Username'] = $Username;
