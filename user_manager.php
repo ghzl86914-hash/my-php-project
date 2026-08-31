@@ -29,12 +29,11 @@ class User
     {
         $stmt = $this->pdo->prepare("SELECT * FROM tblusers WHERE UserName = ?");
 
-$stmt->execute([
-    $UserName
-]);
+        $stmt->execute([
+            $UserName
+        ]);
 
-return $stmt->fetch();
-        
-
+        return $stmt->fetch();
+    
     }
 }
