@@ -8,8 +8,9 @@ class User
         $this->pdo = $db_connection;
     }
 
-    public function RegUser($Username,$Password,$Email,$FullName,$Address)
-    $Connection = $this->prepare("INSERT INTO tblusers
+    public function RegUser($Username,$Password,$Email,$FullName,$Address,$PhoneNumber){
+        $this->$pdo;
+      $Connection = $this->prepare("INSERT INTO tblusers
             (`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
 
     $Connection->execute([
@@ -19,7 +20,9 @@ class User
     $FullName,
     $PhoneNumber,
     $Address
-    ]);
+    ]);  
+    }
+    
 }
 
 ?>
