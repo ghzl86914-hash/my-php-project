@@ -30,7 +30,7 @@ class User
         $stmt = $this->pdo->prepare("SELECT * FROM tblusers WHERE UserName = ?");
 
 $stmt->execute([
-    $tUserName
+    $UserName
 ]);
 
 return $stmt->fetch();
