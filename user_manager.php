@@ -9,6 +9,17 @@ class User
     }
 
     public function RegUser($Username,$Password,$Email,$FullName,$Address)
+    $Connection = $this->prepare("INSERT INTO tblusers
+            (`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
+
+    $Connection->execute([
+    $Username,
+    $Password,
+    $Email,
+    $FullName,
+    $PhoneNumber,
+    $Address
+    ]);
 }
 
 ?>
