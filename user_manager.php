@@ -8,7 +8,7 @@ class User
         $this->pdo = $db_connection;
     }
 
-    public function RegUser()
+    public function RegUser($Username,$Password,$Email,$FullName,$Address)
 }
 
 ?>
