@@ -16,26 +16,12 @@ class User
 
         if($CheckUser->rowCount() > 0 )
         {
-            $checkuser = 1;
+            return false;
         }
 
-        if($checkuser > 0)
-        {
-                    $stmt = $this->pdo->prepare("INSERT INTO tblusers
-                (`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
+        $stmt = $this->pdo->prepare("INSERT INTO tblusers(`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
 
-        return $stmt->execute([
-        $Username,
-        $Password,
-        $Email,
-        $FullName,
-        $PhoneNumber,
-        $Address
-        ]);  
-        }
-
-
-         
+        return $stmt->execute([$Username,$Password,$Email,$FullName,$PhoneNumber,$Address]);  
 
     }
     
