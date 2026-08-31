@@ -10,20 +10,18 @@ class User
 
     public function RegUser($Username,$Password,$Email,$FullName,$Address,$PhoneNumber)
     {
-        $CheckUser = $this->$pdo->prepare("SELECT UserID FROM tblusers WHERE Username= ?");
+        $CheckUser = $this->pdo->prepare("SELECT UserID FROM tblusers WHERE Username= ?");
 
-        $CheckUser->execute([
-            $Username
-        ]);
+        $CheckUser->execute([$Username]);
 
-        $CheckUser->rowCount() > 0 
+        if($CheckUser->rowCount() > 0 )
         {
             $checkuser = 1;
         }
 
         if($checkuser > 0)
         {
-                    $stmt = $this->$pdo->prepare("INSERT INTO tblusers
+                    $stmt = $this->pdo->prepare("INSERT INTO tblusers
                 (`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
 
         return $stmt->execute([
