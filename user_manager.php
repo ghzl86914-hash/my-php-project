@@ -10,10 +10,10 @@ class User
 
     public function RegUser($Username,$Password,$Email,$FullName,$Address,$PhoneNumber)
     {
-        $Connection = $this->pdo->prepare("INSERT INTO tblusers
+        $stmt = $this->pdo->prepare("INSERT INTO tblusers
                 (`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
 
-        $Connection->execute([
+        return $stmt->execute([
         $Username,
         $Password,
         $Email,
@@ -21,6 +21,8 @@ class User
         $PhoneNumber,
         $Address
         ]);  
+
+
     }
     
 }
