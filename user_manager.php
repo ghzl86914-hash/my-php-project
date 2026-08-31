@@ -25,16 +25,16 @@ class User
         return $stmt->execute([$Username, $Password, $Email, $FullName, $PhoneNumber, $Address]);
     }
 
-    public function GetUser($Username)
+    public function GetUser($UserName)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM tblusers WHERE UserName = ?");
 
 $stmt->execute([
-    $CurrentUserName
+    $tUserName
 ]);
 
-return;
-        return $stmt->execute([$Username,$Password,$Email,$FullName,$PhoneNumber,$Address]);  
+return $stmt->fetch();
+        
 
     }
 }
