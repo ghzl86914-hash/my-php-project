@@ -10,6 +10,14 @@ class User
 
     public function RegUser($Username,$Password,$Email,$FullName,$Address,$PhoneNumber)
     {
+        $CheckUser = $this->$pdo->prepare(
+        "SELECT UserID FROM tblusers WHERE Username= ?"
+    );
+
+    $CheckUser->execute([
+        $Username
+    ]);
+    
         $stmt = $this->pdo->prepare("INSERT INTO tblusers
                 (`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
 
@@ -21,14 +29,8 @@ class User
         $PhoneNumber,
         $Address
         ]);  
-        
-         $CheckUser = $this->$pdo->prepare(
-        "SELECT UserID FROM tblusers WHERE Username= ?"
-    );
 
-    $CheckUser->execute([
-        $Username
-    ]);
+         
 
     }
     
