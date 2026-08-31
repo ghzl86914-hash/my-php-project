@@ -40,7 +40,7 @@ class User
     {
         $stmt = $this->pdo->prepare("UPDATE tblusers SET`UserName` = ?,`FirstNameAndLastName` = ?,`Email` = ?,`PhoneNumber` = ?,`Address` = ?,`Password` = ? WHERE `UserName` = ?");
 
-        $stmt->execute([$UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Password,$Userex]);
+        return $stmt->execute([$UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Password,$Userex]);
 
     }
 }
