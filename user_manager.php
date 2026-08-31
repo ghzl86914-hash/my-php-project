@@ -34,6 +34,29 @@ class User
         ]);
 
         return $stmt->fetch();
-    
+
+    }
+    public function EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Password,$User)
+    {
+        $stmt = $this->pdo->prepare(
+                        "UPDATE tblusers SET
+                            `UserName` = ?,
+                            `FirstNameAndLastName` = ?,
+                            `Email` = ?,
+                            `PhoneNumber` = ?,
+                            `Address` = ?,
+                            `Password` = ?
+                        WHERE `UserName` = ?"
+                    );
+
+                    $Update->execute([
+                        $UserName,
+                        $FirstNameAndLastName,
+                        $Email,
+                        $PhoneNumber,
+                        $Address,
+                        $Password,
+                        $User['UserName']
+                    ]);
     }
 }
