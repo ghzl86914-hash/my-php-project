@@ -36,11 +36,11 @@ class User
         return $stmt->fetch();
 
     }
-    public function EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Password,$User)
+    public function EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Password,$Userex)
     {
         $stmt = $this->pdo->prepare("UPDATE tblusers SET`UserName` = ?,`FirstNameAndLastName` = ?,`Email` = ?,`PhoneNumber` = ?,`Address` = ?,`Password` = ? WHERE `UserName` = ?");
 
-        $Update->execute([$UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Password,$User['UserName']]);
+        $stmt->execute([$UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Password,$Userex]);
 
     }
 }
