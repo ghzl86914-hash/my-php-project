@@ -2,9 +2,9 @@
 
 class user 
 {
-    private $pdo;
+    private PDO $pdo;
 
-    public function __construct($db_connection){
+    public function __construct(PDO $db_connection){
         $this->pdo = $db_connection;
     }
 }
