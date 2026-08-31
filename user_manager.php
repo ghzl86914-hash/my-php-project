@@ -43,4 +43,13 @@ class User
         return $stmt->execute([$UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Password,$Userex]);
 
     }
+    public function ForgotPassword($Email,$HashedPassword)
+    {
+        $stmt = $this->pdo->prepare("UPDATE tblusers SET Password = ? WHERE Email = ?");
+
+        $stmt->execute([
+            $Email
+            $HashedPassword
+        ]);
+    }
 }
