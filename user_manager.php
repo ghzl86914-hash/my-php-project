@@ -48,7 +48,7 @@ class User
         $stmt = $this->pdo->prepare("UPDATE tblusers SET Password = ? WHERE Email = ?");
 
         $stmt->execute([
-            $Email
+            $Email,
             $HashedPassword
         ]);
     }
