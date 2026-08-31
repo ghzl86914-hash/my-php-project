@@ -21,7 +21,14 @@ class User
         $PhoneNumber,
         $Address
         ]);  
+        
+         $CheckUser = $this->$pdo->prepare(
+        "SELECT UserID FROM tblusers WHERE Username= ?"
+    );
 
+    $CheckUser->execute([
+        $Username
+    ]);
 
     }
     
