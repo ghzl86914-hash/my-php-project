@@ -23,7 +23,7 @@ class User
 
         if($checkuser > 0)
         {
-                    $stmt = $this->pdo->prepare("INSERT INTO tblusers
+                    $stmt = $this->$pdo->prepare("INSERT INTO tblusers
                 (`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
 
         return $stmt->execute([
