@@ -35,16 +35,8 @@ class User
         $result = $stmt->execute([
             $UserName
         ]);
-
-        if(!$result)
-        {
-            return false;
-        }
-        else
-        {
             
         return $stmt->fetch();
-        }
 
     }
     public function CheckUser($UserName)
