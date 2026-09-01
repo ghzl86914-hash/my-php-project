@@ -65,42 +65,39 @@ if (isset($_POST['login']) && empty($Errors))
 
         $ResultSelect = $UserManage->GetUser($Username);
 
-        if(!$ResultSelect === false)
+
+        if($ResultSelect && password_verify($Password, $ResultSelect['Password'])) 
         {
-            if($ResultSelect && password_verify($Password, $ResultSelect['Password'])) 
-            {
-                unset($_SESSION['login_attempts']);
-                unset($_SESSION['login_locked_until']);
+            unset($_SESSION['login_attempts']);
+            unset($_SESSION['login_locked_until']);
 
 
-                $_SESSION['Login'] = $ResultSelect['UserName'];
-                $_SESSION['Username'] = $ResultSelect['UserName'];
+            $_SESSION['Login'] = $ResultSelect['UserName'];
+            $_SESSION['Username'] = $ResultSelect['UserName'];
 
 
-                echo "<script>window.location='UserPanel.php';</script>";
-                exit();
-            }
-        }     
-        else
-        {
-
-
-            if (!isset($_SESSION['login_attempts'])) 
-            {
-                $_SESSION['login_attempts'] = 0;
-                $_SESSION['login_attempts']++;
-            }
-            
-            elseif(($_SESSION['login_attempts'] >= 2))
-            {
-                $_SESSION['login_locked_until'] = time() + 120;
-
-                $Errors[] = "رمز عبور اشتباه است. حساب شما به مدت ۲ دقیقه قفل شد." . $e->getmessage();
-
-                $Errors[] = "نام کاربری یا رمز عبور اشتباه است. (تلاش " . $_SESSION['login_attempts'] . " از ۲)" . $e->getmessage();
-            }
-    
+            echo "<script>window.location='UserPanel.php';</script>";
+            exit();
         }
+             
+        
+
+        if (!isset($_SESSION['login_attempts'])) 
+        {
+            $_SESSION['login_attempts'] = 0;
+            $_SESSION['login_attempts']++;
+        }
+        
+        elseif(($_SESSION['login_attempts'] >= 2))
+        {
+            $_SESSION['login_locked_until'] = time() + 120;
+
+            $Errors[] = "رمز عبور اشتباه است. حساب شما به مدت ۲ دقیقه قفل شد." . $e->getmessage();
+
+            $Errors[] = "نام کاربری یا رمز عبور اشتباه است. (تلاش " . $_SESSION['login_attempts'] . " از ۲)" . $e->getmessage();
+        }
+    
+        
     }
 }
     
