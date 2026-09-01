@@ -32,6 +32,10 @@ if (isset($_POST['register'])) {
         array_push($Errors, 'رمز عبور نمیتواند خالی باشد');
     }
 
+    $resultadd = $UserManage->RegUser($username, $Password, $Email, $FullName, $PhoneNumber, $Address){
+        
+    }
+
     $CheckUser = $pdo->prepare(
         "SELECT UserID FROM tblusers WHERE Username= ?"
     );
