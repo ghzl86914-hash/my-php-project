@@ -17,19 +17,15 @@ class User
 
         if($CheckUser->rowCount() > 0 )
         {
-            return [
-                'success' => false,
-                'user_id' => null
-            ];
+            return false;
         }
 
         $stmt = $this->pdo->prepare("INSERT INTO tblusers(`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
         $is_success = $stmt->execute([$Username,$Password,$Email,$FullName,$PhoneNumber,$Address]);
         
-        return [
-            'success' => $is_success,
-            'user_id' => $is_success ? $this->pdo->lastInsertId() : null
-        ];
+        return $is_success;
+            
+        ;
     }
 
     public function GetUser($UserName)
