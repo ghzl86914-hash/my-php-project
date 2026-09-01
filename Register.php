@@ -32,61 +32,24 @@ if (isset($_POST['register'])) {
         array_push($Errors, 'رمز عبور نمیتواند خالی باشد');
     }
 
-    $resultadd = $UserManage->RegUser($username, $Password, $Email, $FullName, $PhoneNumber, $Address){
-        
-    }
+    $Password = password_hash($Password, PASSWORD_DEFAULT);
 
-    $CheckUser = $pdo->prepare(
-        "SELECT UserID FROM tblusers WHERE Username= ?"
-    );
+    $resultadd = $UserManage->RegUser($username, $Password, $Email, $FullName, $PhoneNumber, $Address);
 
-    $CheckUser->execute([
-        $Username
-    ]);
-
-   $CheckUser->rowCount() > 0 {
-
-        array_push($Errors, 'این نام کاربری قبلاً ثبت شده است. لطفاً وارد شوید.');
-        foreach ($Errors as $Error) {
-            echo $Error . "<br>";
-            if (count($Errors) > 0) {
-                echo '<br><a href="login.php">ورود به حساب کاربری</a>';
-            }
-        }
-    }
-
-    if (count($Errors) == 0) {
-
-        $Password = password_hash($Password, PASSWORD_DEFAULT);
-
-            $Connection = $pdo->prepare("INSERT INTO tblusers
-            (`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
-
-    $Connection->execute([
-    $Username,
-    $Password,
-    $Email,
-    $FullName,
-    $PhoneNumber,
-    $Address
-    ]);
     
+    $UserID = $Connection->lastInsertId();
+
+    $_SESSION['Login'] = $UserID;
+    $_SESSION['Username'] = $Username;
+
+    session_start();
+
+    $_SESSION['Login'] = $Username;
+    $_SESSION['Username'] = $Username;
+
+    header("Location: UserPanel.php");
+    exit();
     
-            
-
-        $UserID = $Connection->lastInsertId();
-
-        $_SESSION['Login'] = $UserID;
-        $_SESSION['Username'] = $Username;
-
-        session_start();
-
-        $_SESSION['Login'] = $Username;
-        $_SESSION['Username'] = $Username;
-
-        header("Location: UserPanel.php");
-        exit();
-    }
 }
 
 ?>
