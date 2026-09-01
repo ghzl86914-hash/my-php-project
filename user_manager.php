@@ -24,7 +24,7 @@ class User
 
         return [
             'success' => $is_success,
-            'user_id' => $isSuccess ? $this->pdo->lastInsertId() : null
+            'user_id' => $is_success ? $this->pdo->lastInsertId() : null
         ]
     }
 
