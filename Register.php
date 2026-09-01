@@ -24,15 +24,9 @@ if (isset($_POST['register'])) {
     $PhoneNumber = $_POST['phone'];
     $Address = $_POST['address'];
 
-    if (empty($Username)) {
+    if (empty($Username) OR empty($Password)) {
         array_push($Errors, 'نام کاربری نمیتواند خالی باشد');
-        die;
         
-    }
-
-    if (empty($Password)) {
-        array_push($Errors, 'رمز عبور نمیتواند خالی باشد');
-        die;
     }
 
     $Password = password_hash($Password, PASSWORD_DEFAULT);
