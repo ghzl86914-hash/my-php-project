@@ -32,11 +32,19 @@ class User
     {
         $stmt = $this->pdo->prepare("SELECT * FROM tblusers WHERE UserName = ?");
 
-        $stmt->execute([
+        $result = $stmt->execute([
             $UserName
         ]);
 
+        if(!$result)
+        {
+            return false;
+        }
+        else
+        {
+            
         return $stmt->fetch();
+        }
 
     }
     public function CheckUser($UserName)
