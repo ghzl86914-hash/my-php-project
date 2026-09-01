@@ -94,7 +94,7 @@ if (isset($_POST['login']) && empty($Errors))
             $_SESSION['login_attempts']++;
 
 
-            if($_SESSION['login_attempts'] >= 2)
+            elseif(($_SESSION['login_attempts'] >= 2))
                 {
                         $_SESSION['login_locked_until'] = time() + 120;
 
