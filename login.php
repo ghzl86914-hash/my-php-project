@@ -83,7 +83,7 @@ if (isset($_POST['login']) && empty($Errors))
         {   
             if (!isset($_SESSION['login_attempts'])) 
             {
-                $_SESSION['login_attempts'] = 0;
+                $_SESSION['login_attempts'] = 1;
                 
             }
             else
