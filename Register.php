@@ -34,7 +34,7 @@ if (isset($_POST['register'])) {
 
         $resultadd = $UserManage->RegUser($Username, $Password, $Email, $FullName, $PhoneNumber, $Address);
 
-        if($resultadd['success'])
+        if($resultadd['success'] === true)
         {
             $_SESSION['Login'] = $resultadd['user_id'];
             header("Location: UserPanel.php");
