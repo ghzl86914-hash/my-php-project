@@ -53,5 +53,5 @@ class User
         ]);
     }
 
-    $UserManage = new  User();
+    
 }
