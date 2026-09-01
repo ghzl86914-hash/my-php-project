@@ -61,16 +61,8 @@ if (isset($_POST['login']) && empty($Errors)) {
     if (count($Errors) == 0) {
 
         try{
-        $Select = $pdo->prepare(
-            "SELECT UserID, UserName, Password FROM tblusers WHERE UserName = ?");
-            
-        $Select->execute([
-            $Username
-        ]);
 
-        $resultadd = $UserManage->GetUser($Username);
-
-        $ResultSelect = $Select->fetch();
+        $ResultSelect = $UserManage->GetUser($Username);
 
 
         ($ResultSelect && password_verify($Password, $ResultSelect['Password'])) 
