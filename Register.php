@@ -4,7 +4,7 @@ session_start();
 require "db.php";
 require "user_manager.php";
 
-$UserManage = new  User();
+$UserManage = new  User($pdo);
 
 $Errors = [];
 
