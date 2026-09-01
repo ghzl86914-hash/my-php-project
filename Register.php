@@ -26,10 +26,13 @@ if (isset($_POST['register'])) {
 
     if (empty($Username)) {
         array_push($Errors, 'نام کاربری نمیتواند خالی باشد');
+        die;
+        
     }
 
     if (empty($Password)) {
         array_push($Errors, 'رمز عبور نمیتواند خالی باشد');
+        die;
     }
 
     $Password = password_hash($Password, PASSWORD_DEFAULT);
@@ -41,14 +44,7 @@ if (isset($_POST['register'])) {
         $UserID = $resultadd['user_id'];
     }
 
-
     $_SESSION['Login'] = $UserID;
-    $_SESSION['Username'] = $Username;
-
-    session_start();
-
-    $_SESSION['Login'] = $Username;
-    $_SESSION['Username'] = $Username;
 
     header("Location: UserPanel.php");
     exit();
