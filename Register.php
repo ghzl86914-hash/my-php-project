@@ -32,7 +32,7 @@ if (isset($_POST['register'])) {
         {
         $Password = password_hash($Password, PASSWORD_DEFAULT);
 
-        $resultadd = $UserManage->RegUser($username, $Password, $Email, $FullName, $PhoneNumber, $Address);
+        $resultadd = $UserManage->RegUser($Username, $Password, $Email, $FullName, $PhoneNumber, $Address);
 
         if($resultadd['success'])
         {
