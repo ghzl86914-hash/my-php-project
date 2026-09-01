@@ -26,7 +26,7 @@ if (isset($_POST['register'])) {
 
     if (empty($Username) || empty($Password)) 
     {
-        array_push($Error,"نام کاربری یا رمز عبور شما خالی است");
+        $Error[] = "نام کاربری یا رمز عبور شما خالی است";
     }
     else
         {
