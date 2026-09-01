@@ -353,7 +353,7 @@ if (isset($_POST['login']) && empty($Errors))
             </div>
 
             <button class="btn btn-primary w-100 py-2" type="submit" name="login">
-                LoginIn
+                Login
             </button>
             <div class="mt-3 text-center">
                 <a href="ForgotPassword.php">رمز عبور را فراموش کرده‌اید؟</a>
