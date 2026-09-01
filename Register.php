@@ -36,13 +36,18 @@ if (isset($_POST['register'])) {
 
         if($resultadd['success'])
         {
-            $UserID = $resultadd['user_id'];
+            $_SESSION['Login'] = $UserID;
+            header("Location: UserPanel.php");
+            exit();
+        }
+        else 
+        {
+            $Errors[] = "این نام کاربری قبلاً ثبت شده است یا خطایی رخ داد.";
         }
 
-        $_SESSION['Login'] = $UserID;
+        
 
-        header("Location: UserPanel.php");
-        exit();
+        
     }
 }
 
