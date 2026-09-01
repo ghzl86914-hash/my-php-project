@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+require "db.php";
+require "user_manager.php";
+
+$UserManage = new  User($pdo);
+
+
 if (!isset($_POST['login'])) {
     unset($_SESSION['login_attempts']);
     unset($_SESSION['login_locked_until']);
@@ -11,7 +17,7 @@ if (isset($_GET['back'])) {
     unset($_SESSION['login_locked_until']);
 }
 
-require "db.php";
+
 
 $Errors = [];
 $Username = '';
