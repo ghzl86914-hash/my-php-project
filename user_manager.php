@@ -25,7 +25,7 @@ class User
         return [
             'success' => $is_success,
             'user_id' => $is_success ? $this->pdo->lastInsertId() : null
-        ]
+        ];
     }
 
     public function GetUser($UserName)
