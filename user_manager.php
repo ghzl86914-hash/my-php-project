@@ -52,4 +52,6 @@ class User
             $HashedPassword
         ]);
     }
+
+    $UserManage = new  User();
 }
