@@ -41,7 +41,8 @@ if (isset($_SESSION['login_locked_until'])) {
 }
 
 
-if (isset($_POST['login']) && empty($Errors)) {
+if (isset($_POST['login']) && empty($Errors)) 
+{
 
 
     $Username = $_POST['username'];
@@ -58,36 +59,30 @@ if (isset($_POST['login']) && empty($Errors)) {
     }
 
 
-    if (count($Errors) == 0) {
+    if (count($Errors) == 0) 
+    {
 
 
         $ResultSelect = $UserManage->GetUser($Username);
 
         if(!$ResultSelect === false)
         {
+            if($ResultSelect && password_verify($Password, $ResultSelect['Password'])) 
+            {
+                unset($_SESSION['login_attempts']);
+                unset($_SESSION['login_locked_until']);
 
-        }
+
+                $_SESSION['Login'] = $ResultSelect['UserName'];
+                $_SESSION['Username'] = $ResultSelect['UserName'];
 
 
-        if($ResultSelect && password_verify($Password, $ResultSelect['Password'])) 
+                echo "<script>window.location='UserPanel.php';</script>";
+                exit();
+            }
+        }     
+        else
         {
-            unset($_SESSION['login_attempts']);
-            unset($_SESSION['login_locked_until']);
-
-
-            $_SESSION['Login'] = $ResultSelect['UserName'];
-            $_SESSION['Username'] = $ResultSelect['UserName'];
-
-
-            echo "<script>window.location='UserPanel.php';</script>";
-            exit();
-        }
-
-
-
-        
-         catch (PDOException $e)
-         {
 
 
             if (!isset($_SESSION['login_attempts'])) 
@@ -106,15 +101,9 @@ if (isset($_POST['login']) && empty($Errors)) {
                 $Errors[] = "رمز عبور اشتباه است. حساب شما به مدت ۲ دقیقه قفل شد." . $e->getmessage();
 
                 $Errors[] = "نام کاربری یا رمز عبور اشتباه است. (تلاش " . $_SESSION['login_attempts'] . " از ۲)" . $e->getmessage();
-                 }
-            }
         }
-                }
-
-
-            
-                }
-                
+    }
+}
     
 
 
