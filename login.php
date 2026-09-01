@@ -68,6 +68,7 @@ if (isset($_POST['login']) && empty($Errors)) {
             $Username
         ]);
 
+        $resultadd = $UserManage->GetUser($Username);
 
         $ResultSelect = $Select->fetch();
 
