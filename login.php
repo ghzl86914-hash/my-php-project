@@ -93,7 +93,8 @@ if (isset($_POST['login']) && empty($Errors))
 
             $_SESSION['login_attempts']++;
 
-
+            }
+            
             elseif(($_SESSION['login_attempts'] >= 2))
                 {
                         $_SESSION['login_locked_until'] = time() + 120;
@@ -102,6 +103,8 @@ if (isset($_POST['login']) && empty($Errors))
 
                 $Errors[] = "نام کاربری یا رمز عبور اشتباه است. (تلاش " . $_SESSION['login_attempts'] . " از ۲)" . $e->getmessage();
         }
+    
+}
     }
 }
     
