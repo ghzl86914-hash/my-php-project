@@ -2,6 +2,7 @@
 session_start();
 
 require "db.php";
+require "user_manager.php";
 
 $Errors = [];
 
