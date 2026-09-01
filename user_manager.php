@@ -36,6 +36,17 @@ class User
         return $stmt->fetch();
 
     }
+    public function CheckUser($UserName)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM tblusers WHERE UserName = ?");
+
+        $stmt->execute([
+            $UserName
+        ]);
+
+        return $stmt->rowCount();
+
+    }
     public function EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Userex,$Password = null)
     {
         $stmt = $this->pdo->prepare("UPDATE tblusers SET`UserName` = ?,`FirstNameAndLastName` = ?,`Email` = ?,`PhoneNumber` = ?,`Address` = ?,`Password` = COALESCE(?, `Password`) WHERE `UserName` = ?");
