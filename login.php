@@ -60,9 +60,13 @@ if (isset($_POST['login']) && empty($Errors)) {
 
     if (count($Errors) == 0) {
 
-        try{
 
         $ResultSelect = $UserManage->GetUser($Username);
+
+        if(!$ResultSelect === false)
+        {
+
+        }
 
 
         if($ResultSelect && password_verify($Password, $ResultSelect['Password'])) 
@@ -81,7 +85,7 @@ if (isset($_POST['login']) && empty($Errors)) {
 
 
 
-        }
+        
          catch (PDOException $e)
          {
 
