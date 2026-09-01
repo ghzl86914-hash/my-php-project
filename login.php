@@ -90,18 +90,18 @@ if (isset($_POST['login']) && empty($Errors)) {
          {
 
 
-             (!isset($_SESSION['login_attempts'])) 
-                $_SESSION['login_attempts'] = 0;
+            if (!isset($_SESSION['login_attempts'])) 
+                {
+                    $_SESSION['login_attempts'] = 0;
             
 
 
             $_SESSION['login_attempts']++;
 
 
-            ($_SESSION['login_attempts'] >= 2)
-
-
-                $_SESSION['login_locked_until'] = time() + 120;
+            if($_SESSION['login_attempts'] >= 2)
+                {
+                        $_SESSION['login_locked_until'] = time() + 120;
 
                 $Errors[] = "رمز عبور اشتباه است. حساب شما به مدت ۲ دقیقه قفل شد." . $e->getmessage();
 
@@ -109,6 +109,12 @@ if (isset($_POST['login']) && empty($Errors)) {
                  }
             }
         }
+                }
+
+
+            
+                }
+                
     
 
 
