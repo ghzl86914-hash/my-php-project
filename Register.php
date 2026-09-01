@@ -37,7 +37,7 @@ if (isset($_POST['register'])) {
     $resultadd = $UserManage->RegUser($username, $Password, $Email, $FullName, $PhoneNumber, $Address);
 
     
-    $UserID = $Connection->lastInsertId();
+    $UserID = $resultadd['user_id'];
 
     $_SESSION['Login'] = $UserID;
     $_SESSION['Username'] = $Username;

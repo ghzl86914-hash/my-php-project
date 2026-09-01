@@ -20,9 +20,12 @@ class User
             return false;
         }
 
-        $stmt = $this->pdo->prepare("INSERT INTO tblusers(`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
+        $is_success = $this->pdo->prepare("INSERT INTO tblusers(`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
 
-        return $stmt->execute([$Username, $Password, $Email, $FullName, $PhoneNumber, $Address]);
+        return [
+            'success' => $is_success,
+            'user_id' => $isSuccess ? $this->pdo->lastInsertId() : null
+        ]
     }
 
     public function GetUser($UserName)
