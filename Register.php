@@ -24,25 +24,26 @@ if (isset($_POST['register'])) {
     $PhoneNumber = $_POST['phone'];
     $Address = $_POST['address'];
 
-    if (empty($Username) OR empty($Password)) {
-        array_push($Errors, 'نام کاربری نمیتواند خالی باشد');
-        
-    }
-
-    $Password = password_hash($Password, PASSWORD_DEFAULT);
-
-    $resultadd = $UserManage->RegUser($username, $Password, $Email, $FullName, $PhoneNumber, $Address);
-
-    if($resultadd['success'])
+    if (empty($Username) || empty($Password)) 
     {
-        $UserID = $resultadd['user_id'];
+        die("نام کاربری و یا رمز عبور شما خالی است");
     }
+    else
+        {
+        $Password = password_hash($Password, PASSWORD_DEFAULT);
 
-    $_SESSION['Login'] = $UserID;
+        $resultadd = $UserManage->RegUser($username, $Password, $Email, $FullName, $PhoneNumber, $Address);
 
-    header("Location: UserPanel.php");
-    exit();
-    
+        if($resultadd['success'])
+        {
+            $UserID = $resultadd['user_id'];
+        }
+
+        $_SESSION['Login'] = $UserID;
+
+        header("Location: UserPanel.php");
+        exit();
+    }
 }
 
 ?>
