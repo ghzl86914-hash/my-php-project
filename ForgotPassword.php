@@ -58,7 +58,7 @@ if (isset($_POST['resetPassword'])) {
         $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
       
 
-        $resultadd = $UserManage->ForgotPassword($Email,$HashedPassword);
+        $resultadd = $UserManage->ForgotPassword($HashedPassword,$Email);
 
         if(!$resultadd === false)
             {
