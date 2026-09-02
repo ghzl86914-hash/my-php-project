@@ -67,12 +67,14 @@ class User
         ]);
     }
 
-    public function Email($Email)
+    public function GetEmailUser($Email)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM tblusers WHERE Email = ?");
 
         $stmt->execute([
             $Email
         ]);
+
+        return $stmt->fetch();
     }
 }
