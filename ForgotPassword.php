@@ -56,20 +56,21 @@ if (isset($_POST['resetPassword'])) {
         $Step = 2;
     } else {
         $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
-    try
-    {
-        
+      
 
         $resultadd = $UserManage->ForgotPassword($Email,$HashedPassword);
 
-        unset($_SESSION['reset_email']);
-        $Success = true;
-        $Step = 3;
-    }
+        if(!$resultadd === false)
+            {
+                unset($_SESSION['reset_email']);
+                $Success = true;
+                $Step = 3;
+            }
+
         
-    catch(PDOException $e)
+    else
     {
-        $Errors[] = "خطا در تغییر رمز عبور" . $e->getmessage();
+        $Errors[] = "خطا در تغییر رمز عبور" ;
 
         $Step = 2;
     }
