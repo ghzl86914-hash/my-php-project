@@ -1,22 +1,26 @@
 <?php
 session_start();
 
+require "db.php";
+require "user_manager.php";
+
+$UserManage = new  User($pdo);
+
+
 if (!isset($_SESSION['Login'])) {
     header("Location: login.php");
     exit();
 }
 
-require "db.php";
+
 
 $CurrentUserName = $_SESSION['Login'];
 $Errors = [];
 
-// گرفتن اطلاعات کاربر
-$stmt = $pdo->prepare("SELECT * FROM tblusers WHERE UserName = ?");
+$resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Userex,$Password = null);
 
-$stmt->execute([
-    $CurrentUserName
-]);
+// گرفتن اطلاعات کاربر
+
 
 $User = $stmt->fetch();
 
