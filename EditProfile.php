@@ -63,52 +63,15 @@ if (isset($_POST['btnUpdate']))
                 {
                     $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
 
-                    $Update = $pdo->prepare(
-                        "UPDATE tblusers SET
-                            `UserName` = ?,
-                            `FirstNameAndLastName` = ?,
-                            `Email` = ?,
-                            `PhoneNumber` = ?,
-                            `Address` = ?,
-                            `Password` = ?
-                        WHERE `UserName` = ?"
-                    );
-
-                    $Update->execute([
-                        $UserName,
-                        $FirstNameAndLastName,
-                        $Email,
-                        $PhoneNumber,
-                        $Address,
-                        $Password,
-                        $User['UserName']
-                    ]);
+                   
                 } 
                 else 
                 {
-                    $Update = $pdo->prepare(
-                        "UPDATE tblusers SET
-                            `UserName` = ?,
-                            `FirstNameAndLastName` = ?,
-                            `Email` = ?,
-                            `PhoneNumber` = ?,
-                            `Address` = ?
-                        WHERE `UserName` = ?"
-                    );
-
-                    $Update->execute([
-                        $UserName,
-                        $FirstNameAndLastName,
-                        $Email,
-                        $PhoneNumber,
-                        $Address,
-                        $User['UserName']
-
-                    ]);
+                   $_SESSION['Login'] = $UserName;
+                    echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
                 }
                 
-                    $_SESSION['Login'] = $UserName;
-                    echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
+                    
                 
         
             }
