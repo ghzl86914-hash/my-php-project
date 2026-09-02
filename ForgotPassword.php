@@ -2,6 +2,9 @@
 session_start();
 
 require "db.php";
+require "user_manager.php";
+
+$UserManage = new  User($pdo);
 
 $Errors = [];
 $Success = false;
@@ -20,11 +23,7 @@ if (isset($_POST['checkEmail'])) {
         try
         {
 
-            $Select = $pdo->prepare("SELECT * FROM tblusers WHERE Email = ?");
-
-            $Select->execute([
-                $Email
-            ]);
+            $resultadd = $UserManage->ForgotPassword($Email,$HashedPassword);
 
             $User = $Select->fetch();
 
