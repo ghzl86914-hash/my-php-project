@@ -23,7 +23,7 @@ if (isset($_POST['checkEmail'])) {
         try
         {
 
-            $resultadd = $UserManage->ForgotPassword($Email,$HashedPassword);
+            $resultadd = $UserManage->GetEmailUser($Email);
 
             $User = $resultadd->fetch();
 
@@ -65,6 +65,8 @@ if (isset($_POST['resetPassword'])) {
     {
         
 
+        $resultadd = $UserManage->ForgotPassword($Email,$HashedPassword);
+        
         unset($_SESSION['reset_email']);
         $Success = true;
         $Step = 3;
