@@ -25,12 +25,12 @@ if (isset($_POST['checkEmail'])) {
 
             $resultadd = $UserManage->ForgotPassword($Email,$HashedPassword);
 
-            $User = $Select->fetch();
+            $User = $resultadd->fetch();
 
             // ایمیل پیدا شد → برو مرحله بعد
             $_SESSION['reset_email'] = $Email;
             $Step = 2;
-
+        }
         catch(PDOException $e)
         { 
 
@@ -42,7 +42,6 @@ if (isset($_POST['checkEmail'])) {
         }
 
         }
-}
     
 
 // مرحله دوم: ثبت رمز جدید
@@ -77,6 +76,7 @@ if (isset($_POST['resetPassword'])) {
 
         $Step = 2;
     }
+}
 }
 ?>
 <!DOCTYPE html>
