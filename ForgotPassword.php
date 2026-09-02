@@ -20,22 +20,19 @@ if (isset($_POST['checkEmail'])) {
         $Errors[] = "ایمیل وارد شده معتبر نیست";
     } else {
 
-        try
-        {
+        
 
             $resultadd = $UserManage->GetEmailUser($Email);
-
+            if(!$resultadd === false)
+                {
+                   $_SESSION['reset_email'] = $Email;
+                    $Step = 2;
+                }
             // ایمیل پیدا شد → برو مرحله بعد
-            $_SESSION['reset_email'] = $Email;
-            $Step = 2;
-        }
-        catch(PDOException $e)
-        { 
-
-
-            $Errors[] = "هیچ کاربری با این ایمیل پیدا نشد" . $e->getmessage();
-        }
-        
+            else{
+                $Errors[] = "هیچ کاربری با این ایمیل پیدا نشد" ;
+            }
+    
 
         }
 
