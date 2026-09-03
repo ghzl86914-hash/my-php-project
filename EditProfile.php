@@ -17,7 +17,7 @@ if (!isset($_SESSION['Login'])) {
 $CurrentUserName = $_SESSION['Login'];
 $Errors = [];
 
-$resultadd = $UserManage->GetUser($CurrentUserName)
+$User = $UserManage->GetUser($CurrentUserName);
 
 // گرفتن اطلاعات کاربر
 
