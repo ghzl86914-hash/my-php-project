@@ -66,6 +66,9 @@ if (isset($_POST['btnUpdate']))
                 } 
                 else 
                 {
+                    $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Userex);
+
+
                    $_SESSION['Login'] = $UserName;
                     echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
                 }
