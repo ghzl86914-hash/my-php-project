@@ -58,7 +58,7 @@ if (isset($_POST['btnUpdate']))
 
         if (!empty($NewPassword)) 
         {
-            $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
+            $HashedPassword = !empty($NewPassword) ? password_hash($NewPassword, PASSWORD_DEFAULT) : null;
 
             $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName,$HashedPassword);
             
