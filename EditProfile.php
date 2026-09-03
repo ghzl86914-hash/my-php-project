@@ -69,7 +69,7 @@ if (isset($_POST['btnUpdate']))
             }
             else
             {
-                $Errors[] = "خطا در ذخیره اطلاعات";
+                $Errors[] = "مقدار نباید خالی باشد!";
             }
         } 
         else 
