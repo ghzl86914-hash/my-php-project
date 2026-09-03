@@ -63,7 +63,7 @@ if (isset($_POST['btnUpdate']))
             $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName,$HashedPassword);
             
         } 
-        else 
+        elseif 
         {
             $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName);
 
@@ -72,6 +72,11 @@ if (isset($_POST['btnUpdate']))
                 $_SESSION['Login'] = $UserName;
             echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
             }
+
+            else
+                {
+                    $Errors[] = "خطا در ذخیره اطلاعات";
+                }
             
         }
 
