@@ -66,7 +66,7 @@ if (isset($_POST['btnUpdate']))
                 } 
                 else 
                 {
-                    $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Userex);
+                    $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName);
 
 
                    $_SESSION['Login'] = $UserName;
