@@ -79,10 +79,6 @@ if (isset($_POST['btnUpdate']))
             
         }
 
-            // اطلاعات جدید رو دوباره بگیر
-            // $Select = mysqli_query($Connection, "SELECT * FROM tblusers WHERE UserName = '$UserName'");
-            // $User = mysqli_fetch_assoc($Select);
-            // $CurrentUserName = $UserName;
     }     
 }
 
