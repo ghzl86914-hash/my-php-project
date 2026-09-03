@@ -50,7 +50,7 @@ class User
         return $stmt->rowCount();
 
     }
-    public function EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Userex,$Password = null)
+    public function EditProfile($Userex, $UserName = null, $FirstNameAndLastName = null, $Email = null, $PhoneNumber = null, $Address = null, $Password = null)
     {
         $stmt = $this->pdo->prepare("UPDATE tblusers SET`UserName` = COALESCE(?, `UserName`),`FirstNameAndLastName` = COALESCE(?, `FirstNameAndLastName`),`Email` = COALESCE(?, `Email`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`),`Password` = COALESCE(?, `Password`) WHERE `UserName` = ?");
 
