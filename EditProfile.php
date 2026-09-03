@@ -17,12 +17,12 @@ if (!isset($_SESSION['Login'])) {
 $CurrentUserName = $_SESSION['Login'];
 $Errors = [];
 
-$resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Userex,$Password = null);
+$resultadd = $UserManage->GetUser($UserName)
 
 // گرفتن اطلاعات کاربر
 
 
-$User = $stmt->fetch();
+$User = $resultadd->fetch();
 
 if (!$User) {
     die("کاربر پیدا نشد");
@@ -63,6 +63,7 @@ if (isset($_POST['btnUpdate']))
                 {
                     $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
 
+                    $resultadd = $UserManage->RegUser($Username, $Password, $Email, $FullName, $PhoneNumber, $Address);
                    
                 } 
                 else 
