@@ -62,7 +62,7 @@ if (isset($_POST['btnUpdate']))
 
             $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName,$HashedPassword);
             
-            if(!$resultadd === false)
+            if($resultadd)
             {
                 $_SESSION['Login'] = $UserName;
             echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
@@ -76,7 +76,7 @@ if (isset($_POST['btnUpdate']))
         {
             $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName);
 
-            if(!$resultadd === false)
+            if($resultadd)
             {
                 $_SESSION['Login'] = $UserName;
             echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
