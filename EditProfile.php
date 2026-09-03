@@ -56,34 +56,25 @@ if (isset($_POST['btnUpdate']))
     if (count($Errors) == 0) 
     {
 
-        try{
-                if (!empty($NewPassword)) 
-                {
-                    $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
+        if (!empty($NewPassword)) 
+        {
+            $HashedPassword = password_hash($NewPassword, PASSWORD_DEFAULT);
 
-                    $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName,$HashedPassword);
-                   
-                } 
-                else 
-                {
-                    $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName);
+            $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName,$HashedPassword);
+            
+        } 
+        else 
+        {
+            $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName);
 
-                if(!$resultadd === false)
-                    {
-                        $_SESSION['Login'] = $UserName;
-                    echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
-                    }
-                   
-                }
-                
-                    
-                
-        
-            }
-            catch(PDOException $e)
+        if(!$resultadd === false)
             {
-                $Errors[] = "خطا در ذخیره اطلاعات: " . $e->getmessage();
+                $_SESSION['Login'] = $UserName;
+            echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
             }
+            
+        }
+
             // اطلاعات جدید رو دوباره بگیر
             // $Select = mysqli_query($Connection, "SELECT * FROM tblusers WHERE UserName = '$UserName'");
             // $User = mysqli_fetch_assoc($Select);
