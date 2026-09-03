@@ -31,12 +31,12 @@ if (isset($_POST['btnUpdate']))
 {
 
     $UserName = !empty($_POST['UserName']) ? trim($_POST['UserName']) : NULL;
-    $FirstNameAndLastName = trim($_POST['FirstNameAndLastName']);
-    $Email =  trim($_POST['Email']);
-    $PhoneNumber = trim($_POST['PhoneNumber']);
-    $Address = trim($_POST['Address']);
-    $CurrentPassword = $_POST['CurrentPassword'] ?? '';
-    $NewPassword = $_POST['NewPassword'] ?? '';
+    $FirstNameAndLastName = !empty($_POST['$FirstNameAndLastName']) ? trim($_POST['$FirstNameAndLastName']) : null;
+    $Email = !empty($_POST['$Email']) ? trim($_POST['Email']) : null;
+    $PhoneNumber = !empty($_POST['$PhoneNumber']) ? trim($_POST['PhoneNumber']) : null;
+    $Address = !empty($_POST['$Address']) ? trim($_POST['Address']) : null;
+    $CurrentPassword = !empty($_POST['$CurrentPassword']) ? trim($_POST['$CurrentPassword']) : NULL;
+    $NewPassword = !empty($_POST['NewPassword']) ? trim($_POST['NewPassword']) : NULL;
 
     // اعتبارسنجی ایمیل
     if (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
