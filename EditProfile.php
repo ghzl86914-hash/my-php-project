@@ -44,12 +44,15 @@ if (isset($_POST['btnUpdate']))
     }
 
     // اگر می‌خواد رمز عوض کنه
-    if (!empty($NewPassword)  && empty($CurrentPassword)) {
-            $Errors[] = "برای تغییر رمز، باید رمز فعلی را وارد کنید";
-        } elseif (!password_verify($CurrentPassword, $User['Password'])) {
-            $Errors[] = "رمز فعلی اشتباه است";
-        }
+    if (!empty($NewPassword)  && empty($CurrentPassword)) 
+    {
+        $Errors[] = "برای تغییر رمز، باید رمز فعلی را وارد کنید";
     }
+    elseif (!password_verify($CurrentPassword, $User['Password'])) 
+    {
+        $Errors[] = "رمز فعلی اشتباه است";
+    }
+    
 
     // اگر خطایی نبود، آپدیت کن
     if (count($Errors) == 0) 
