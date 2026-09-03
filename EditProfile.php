@@ -30,7 +30,7 @@ if (!$User) {
 if (isset($_POST['btnUpdate'])) 
 {
 
-    $UserName = trim($_POST['UserName']);
+    $UserName = !empty($_POST['UserName']) ? trim($_POST['UserName']) : NULL;
     $FirstNameAndLastName = trim($_POST['FirstNameAndLastName']);
     $Email =  trim($_POST['Email']);
     $PhoneNumber = trim($_POST['PhoneNumber']);
