@@ -17,12 +17,10 @@ if (!isset($_SESSION['Login'])) {
 $CurrentUserName = $_SESSION['Login'];
 $Errors = [];
 
-$resultadd = $UserManage->GetUser($UserName)
+$resultadd = $UserManage->GetUser($CurrentUserName)
 
 // گرفتن اطلاعات کاربر
 
-
-$User = $resultadd->fetch();
 
 if (!$User) {
     die("کاربر پیدا نشد");
