@@ -69,18 +69,6 @@ if (isset($_POST['btnUpdate']))
         {
             $Errors[] = "مقدار نباید خالی باشد!";
         }
-    
-        $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName);
-
-        if($resultadd)
-        {
-            $_SESSION['Login'] = $UserName;
-        echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
-        }
-        else
-        {
-            $Errors[] = "خطا در ذخیره اطلاعات";
-        }
 
     }     
 }
