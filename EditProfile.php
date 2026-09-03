@@ -63,7 +63,7 @@ if (isset($_POST['btnUpdate']))
             $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName,$HashedPassword);
             
         } 
-        elseif 
+        else 
         {
             $resultadd = $UserManage->EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$CurrentUserName);
 
