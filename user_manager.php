@@ -52,7 +52,7 @@ class User
     }
     public function EditProfile($UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Userex,$Password = null)
     {
-        $stmt = $this->pdo->prepare("UPDATE tblusers SET`UserName` = ?,`FirstNameAndLastName` = ?,`Email` = ?,`PhoneNumber` = ?,`Address` = ?,`Password` = COALESCE(?, `Password`) WHERE `UserName` = ?");
+        $stmt = $this->pdo->prepare("UPDATE tblusers SET`UserName` = COALESCE(?, `UserName`),`FirstNameAndLastName` = COALESCE(?, `FirstNameAndLastName`),`Email` = COALESCE(?, `Email`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`),`Password` = COALESCE(?, `Password`) WHERE `UserName` = ?");
 
         return $stmt->execute([$UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Password,$Userex]);
 
