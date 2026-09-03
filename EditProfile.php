@@ -31,10 +31,10 @@ if (isset($_POST['btnUpdate']))
 {
 
     $UserName = !empty($_POST['UserName']) ? trim($_POST['UserName']) : NULL;
-    $FirstNameAndLastName = !empty($_POST['$FirstNameAndLastName']) ? trim($_POST['$FirstNameAndLastName']) : null;
-    $Email = !empty($_POST['$Email']) ? trim($_POST['Email']) : null;
-    $PhoneNumber = !empty($_POST['$PhoneNumber']) ? trim($_POST['PhoneNumber']) : null;
-    $Address = !empty($_POST['$Address']) ? trim($_POST['Address']) : null;
+    $FirstNameAndLastName = !empty($_POST['$FirstNameAndLastName']) ? trim($_POST['$FirstNameAndLastName']) : NULL;
+    $Email = !empty($_POST['$Email']) ? trim($_POST['Email']) : NULL;
+    $PhoneNumber = !empty($_POST['$PhoneNumber']) ? trim($_POST['PhoneNumber']) : NULL;
+    $Address = !empty($_POST['$Address']) ? trim($_POST['Address']) : NULL;
     $CurrentPassword = !empty($_POST['$CurrentPassword']) ? trim($_POST['$CurrentPassword']) : NULL;
     $NewPassword = !empty($_POST['NewPassword']) ? trim($_POST['NewPassword']) : NULL;
 
