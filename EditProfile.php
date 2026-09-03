@@ -39,7 +39,7 @@ if (isset($_POST['btnUpdate']))
     $NewPassword = !empty($_POST['NewPassword']) ? trim($_POST['NewPassword']) : NULL;
 
     // اعتبارسنجی ایمیل
-    if (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
+    if ($Email !== NULL && !filter_var($Email, FILTER_VALIDATE_EMAIL)) {
         $Errors[] = "ایمیل وارد شده معتبر نیست";
     }
 
