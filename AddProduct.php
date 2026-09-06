@@ -2,9 +2,9 @@
 session_start();
 
 require "db.php";
-require "user_manager.php";
+require "product_manager.php";
 
-$ProductManage = new  User($pdo);
+$ProductManage = new  Product($pdo);
 
 if (!isset($_SESSION['Login'])) {
     header("Location: login.php");
