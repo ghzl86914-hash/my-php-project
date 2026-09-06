@@ -1,6 +1,6 @@
 <?php
 
-class product
+class Product
 {
     private PDO $pdo;
 
@@ -9,12 +9,21 @@ class product
         $this->pdo = $db_connection;
     }
 
-    public function AddProduct($CurrentUserName,$Title,$Price,$ImageName)
+    public function AddProduct($CurrentUserName, $Title, $Price, $ImageName)
+    {
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO tblproducts 
+            (UserName, ProductTitle, PriceProduct, ProductImageName)
+            VALUES (?, ?, ?, ?)"
+        );
 
-    $stmt = $this->pdo->prepare("INSERT INTO tblproducts (UserName, ProductTitle, PriceProduct, ProductImageName)
-             VALUES (?, ?, ?, ?)");
-
-             $stmt->execute([$CurrentUserName,$Title,$Price,$ImageName]);
+        return $stmt->execute([
+            $CurrentUserName,
+            $Title,
+            $Price,
+            $ImageName
+        ]);
+    }
 }
 
 ?>
