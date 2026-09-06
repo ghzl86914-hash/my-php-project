@@ -1,12 +1,16 @@
 <?php
 session_start();
 
+require "db.php";
+require "user_manager.php";
+
+$ProductManage = new  User($pdo);
+
 if (!isset($_SESSION['Login'])) {
     header("Location: login.php");
     exit();
 }
 
-require "db.php";
 
 $CurrentUserName = $_SESSION['Login'];
 $Errors = [];
@@ -53,24 +57,15 @@ if (isset($_POST['btnAddProduct'])) {
     // اگر خطایی نبود، ذخیره کن
     if (count($Errors) == 0) {
 
-        try{
-            $stmt = $pdo->prepare("INSERT INTO tblproducts (UserName, ProductTitle, PriceProduct, ProductImageName)
-             VALUES (:CurrentUserName, :Title, :Price, :ImageName)");
-
-            $stmt->execute([
-
-                    'CurrentUserName' => $CurrentUserName,
-                    'Title' => $Title,
-                    'Price' => $Price,
-                    'ImageName' => $ImageName
-                ]);
-        }
-        catch(PDOException $e)
-        {
-            $Errors[] = "خطا در ذخیره محصول: " . $e->getmessage();
-        }
+        
+           $resultadd = $ProductManage->AddProduct($CurrentUserName, $Title, $Price, $ImageName);
+    }else{
+        $Errors[] = "خطا در ذخیره محصول: ";
     }
-}
+            
+        
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
