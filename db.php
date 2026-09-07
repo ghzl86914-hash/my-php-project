@@ -2,7 +2,7 @@
 
 
 $host = 'localhost';
-$dbname = 'dbpanel';
+$dbname = 'accessory';
 $dbuser = 'root';
 $dbpass = '';
 
