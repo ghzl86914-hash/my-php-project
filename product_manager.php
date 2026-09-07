@@ -9,19 +9,26 @@ class Product
         $this->pdo = $db_connection;
     }
 
-    public function AddProduct($CurrentUserName, $Title, $Price, $ImageName)
+    public function AddProduct($Title, $Price, $ImageName, $Color, $CategoryID, $CommentID, $Score, $Stock, $Description, $Add_Date, $BrandID)
     {
         $stmt = $this->pdo->prepare(
             "INSERT INTO product
-            (`UserName`, `ProductTitle`, `PriceProduct`, `ProductImageName`, `ProductColor`, `Quantity`, `CategoryID`, `Filter`, `CommentID`, `Score`, `Stock`, `Description`, `Add_Date`, `BrandID`)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            (`ProductTitle`, `PriceProduct`, `ProductImageName`, `ProductColor`, `CategoryID`, `CommentID`, `Score`, `Stock`, `Description`, `Add_Date`, `BrandID`)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         );
 
         return $stmt->execute([
-            $CurrentUserName,
-            $Title,
-            $Price,
-            $ImageName
+            $Title, 
+            $Price, 
+            $ImageName, 
+            $Color, 
+            $CategoryID, 
+            $CommentID, 
+            $Score, 
+            $Stock, 
+            $Description, 
+            $Add_Date, 
+            $BrandID
         ]);
     }
 }
