@@ -9,19 +9,19 @@ class User
         $this->pdo = $db_connection;
     }
 
-    public function RegUser($Username,$Password,$Email,$FullName,$PhoneNumber,$Address)
+    public function RegUser($UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$CreateDate)
     {
         $CheckUser = $this->pdo->prepare("SELECT UserID FROM tblusers WHERE Username= ?");
 
-        $CheckUser->execute([$Username]);
+        $CheckUser->execute([$UserName]);
 
         if($CheckUser->rowCount() > 0 )
         {
             return false;
         }
 
-        $stmt = $this->pdo->prepare("INSERT INTO tblusers(`Username`,`Password`,`Email`,`FirstNameAndLastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?)");
-        $is_success = $stmt->execute([$Username,$Password,$Email,$FullName,$PhoneNumber,$Address]);
+        $stmt = $this->pdo->prepare("INSERT INTO tblusers(`Username`,`Password`,`Email`,`FirstName`,`LastName`,`PhoneNumber`,`Address`,`CreateDate`)VALUES(?,?,?,?,?,?)");
+        $is_success = $stmt->execute([$UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$CreateDate]);
         
         return $is_success;
             
@@ -50,11 +50,11 @@ class User
         return $stmt->rowCount();
 
     }
-    public function EditProfile($Userex, $UserName = null, $FirstNameAndLastName = null, $Email = null, $PhoneNumber = null, $Address = null, $Password = null)
+    public function EditProfile($Userex, $UserName = null, $FirstName = null, $LastName = null, $Email = null, $PhoneNumber = null, $Address = null, $Password = null, $UpdateAT = null)
     {
-        $stmt = $this->pdo->prepare("UPDATE tblusers SET`UserName` = COALESCE(?, `UserName`),`FirstNameAndLastName` = COALESCE(?, `FirstNameAndLastName`),`Email` = COALESCE(?, `Email`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`),`Password` = COALESCE(?, `Password`) WHERE `UserName` = ?");
+        $stmt = $this->pdo->prepare("UPDATE tblusers SET`UserName` = COALESCE(?, `UserName`),`FirstName` = COALESCE(?, `FirstName`), `LastName` = COALESCE(?, `LastName`),`Email` = COALESCE(?, `Email`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`),`Password` = COALESCE(?, `Password`), `UpdateAT` = COALESCE(?, `UpdateAT`)  WHERE `UserName` = ?");
 
-        return $stmt->execute([$UserName,$FirstNameAndLastName,$Email,$PhoneNumber,$Address,$Password,$Userex]);
+        return $stmt->execute([$UserName,$FirstName,$LastName,$Email,$PhoneNumber,$Address,$Password,$UpdateAT,$Userex]);
 
     }
     public function ForgotPassword($HashedPassword,$Email)
