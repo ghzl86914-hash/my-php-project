@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-require "db.php";
-require "product_manager.php";
-
-$ProductManage = new  Product($pdo);
-
 if (!isset($_SESSION['Login'])) {
     header("Location: login.php");
     exit();
 }
 
+$Connection = mysqli_connect("localhost", "root", "", "dbpanel");
+
+if (!$Connection) {
+    die("خطا در اتصال به دیتابیس");
+}
 
 $CurrentUserName = $_SESSION['Login'];
 $Errors = [];
@@ -18,8 +18,8 @@ $Success = false;
 
 if (isset($_POST['btnAddProduct'])) {
 
-    $Title = trim($_POST['ProductTitle']);
-    $Price = trim($_POST['PriceProduct']);
+    $Title = mysqli_real_escape_string($Connection, trim($_POST['ProductTitle']));
+    $Price = mysqli_real_escape_string($Connection, trim($_POST['PriceProduct']));
     $ImageName = '';
 
     // اعتبارسنجی
@@ -53,18 +53,23 @@ if (isset($_POST['btnAddProduct'])) {
             }
         }
     }
+
     // اگر خطایی نبود، ذخیره کن
     if (count($Errors) == 0) {
 
-        
-           $resultadd = $ProductManage->AddProduct($CurrentUserName, $Title, $Price, $ImageName);
-    }else{
-        $Errors[] = "خطا در ذخیره محصول: ";
+        $Insert = mysqli_query(
+            $Connection,
+            "INSERT INTO tblproducts (UserName, ProductTitle, PriceProduct, ProductImageName)
+             VALUES ('$CurrentUserName', '$Title', '$Price', '$ImageName')"
+        );
+
+        if ($Insert) {
+            $Success = true;
+        } else {
+            $Errors[] = "خطا در ذخیره محصول: " . mysqli_error($Connection);
+        }
     }
-            
-        
-    }
-////;adsfjkkl;skgl;dfkg;d
+}
 ?>
 <!DOCTYPE html>
 <html>
