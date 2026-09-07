@@ -11,7 +11,7 @@ class User
 
     public function RegUser($UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$CreateDate)
     {
-        $CheckUser = $this->pdo->prepare("SELECT UserID FROM tblusers WHERE Username= ?");
+        $CheckUser = $this->pdo->prepare("SELECT UserID FROM user WHERE Username= ?");
 
         $CheckUser->execute([$UserName]);
 
@@ -20,7 +20,7 @@ class User
             return false;
         }
 
-        $stmt = $this->pdo->prepare("INSERT INTO tblusers(`Username`,`Password`,`Email`,`FirstName`,`LastName`,`PhoneNumber`,`Address`,`CreateDate`)VALUES(?,?,?,?,?,?)");
+        $stmt = $this->pdo->prepare("INSERT INTO user(`UserName`,`Password`,`Email`,`FirstName`,`LastName`,`PhoneNumber`,`Address`,`CreateDate`)VALUES(?,?,?,?,?,?,?,?)");
         $is_success = $stmt->execute([$UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$CreateDate]);
         
         return $is_success;
@@ -30,7 +30,7 @@ class User
 
     public function GetUser($UserName)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM tblusers WHERE UserName = ?");
+        $stmt = $this->pdo->prepare("SELECT * FROM user WHERE UserName = ?");
 
         $stmt->execute([
             $UserName
@@ -41,7 +41,7 @@ class User
     }
     public function CheckUser($UserName)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM tblusers WHERE UserName = ?");
+        $stmt = $this->pdo->prepare("SELECT * FROM user WHERE UserName = ?");
 
         $stmt->execute([
             $UserName
@@ -52,14 +52,14 @@ class User
     }
     public function EditProfile($Userex, $UserName = null, $FirstName = null, $LastName = null, $Email = null, $PhoneNumber = null, $Address = null, $Password = null, $UpdateAT = null)
     {
-        $stmt = $this->pdo->prepare("UPDATE tblusers SET`UserName` = COALESCE(?, `UserName`),`FirstName` = COALESCE(?, `FirstName`), `LastName` = COALESCE(?, `LastName`),`Email` = COALESCE(?, `Email`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`),`Password` = COALESCE(?, `Password`), `UpdateAT` = COALESCE(?, `UpdateAT`)  WHERE `UserName` = ?");
+        $stmt = $this->pdo->prepare("UPDATE user SET`UserName` = COALESCE(?, `UserName`),`FirstName` = COALESCE(?, `FirstName`), `LastName` = COALESCE(?, `LastName`),`Email` = COALESCE(?, `Email`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`),`Password` = COALESCE(?, `Password`), `UpdateAT` = COALESCE(?, `UpdateAT`)  WHERE `UserName` = ?");
 
         return $stmt->execute([$UserName,$FirstName,$LastName,$Email,$PhoneNumber,$Address,$Password,$UpdateAT,$Userex]);
 
     }
     public function ForgotPassword($HashedPassword,$Email)
     {
-        $stmt = $this->pdo->prepare("UPDATE tblusers SET Password = ? WHERE Email = ?");
+        $stmt = $this->pdo->prepare("UPDATE user SET Password = ? WHERE Email = ?");
 
       return $stmt->execute([
             $HashedPassword,
@@ -69,7 +69,7 @@ class User
 
     public function GetEmailUser($Email)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM tblusers WHERE Email = ?");
+        $stmt = $this->pdo->prepare("SELECT * FROM user WHERE Email = ?");
 
         $stmt->execute([
             $Email
