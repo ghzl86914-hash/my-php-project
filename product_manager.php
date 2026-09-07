@@ -12,9 +12,9 @@ class Product
     public function AddProduct($CurrentUserName, $Title, $Price, $ImageName)
     {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO tblproducts 
-            (UserName, ProductTitle, PriceProduct, ProductImageName)
-            VALUES (?, ?, ?, ?)"
+            "INSERT INTO product
+            (`UserName`, `ProductTitle`, `PriceProduct`, `ProductImageName`, `ProductColor`, `Quantity`, `CategoryID`, `Filter`, `CommentID`, `Score`, `Stock`, `Description`, `Add_Date`, `BrandID`)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         );
 
         return $stmt->execute([
