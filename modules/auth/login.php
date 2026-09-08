@@ -76,7 +76,7 @@ if (isset($_POST['login']) && empty($Errors))
             $_SESSION['Username'] = $ResultSelect['UserName'];
 
 
-            echo "<script>window.location='users/UserPanel.php';</script>";
+            echo "<script>window.location='modules/users/UserPanel.php';</script>";
             exit();
         }
         else

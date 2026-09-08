@@ -37,7 +37,7 @@ if (isset($_POST['register'])) {
         if($resultadd === true)
         {
             $_SESSION['Login'] = $Username;
-            header("Location: users/UserPanel.php");
+            header("Location: modules/users/UserPanel.php");
             exit();
         }
         else 
