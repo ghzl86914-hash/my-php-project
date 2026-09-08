@@ -182,8 +182,13 @@ if (isset($_POST['btnUpdate']))
             </div>
 
             <div class="form-group">
-                <label>نام و نام خانوادگی:</label>
-                <input type="text" name="FirstNameAndLastName" value="<?php echo htmlspecialchars($User['FirstNameAndLastName']); ?>">
+                <label>نام:</label>
+                <input type="text" name="FirstName" value="<?php echo htmlspecialchars($User['FirstName']); ?>">
+            </div>
+
+            <div class="form-group">
+                <label> نام خانوادگی:</label>
+                <input type="text" name="LastName" value="<?php echo htmlspecialchars($User['LastName']); ?>">
             </div>
 
             <div class="form-group">
