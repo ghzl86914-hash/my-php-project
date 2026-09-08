@@ -130,8 +130,8 @@ if (isset($_POST['login']) && empty($Errors))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/assets/../bootstrap.min.css" />
-    <link rel="stylesheet" href="css/assets/../Style.css">
+    <link rel="stylesheet" href="../../assets/cssbootstrap.min.css" />
+    <link rel="stylesheet" href="../../asstes/cssStyle.css">
 
 
     <meta name="theme-color" content="#712cf9" />
