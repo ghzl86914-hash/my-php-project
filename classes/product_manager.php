@@ -13,7 +13,7 @@ class Product
     {
         $stmt = $this->pdo->prepare(
             "INSERT INTO product
-            (`ProductTitle`, `PriceProduct`, `ProductImageName`, `ProductColor`, `CommentID`, `Score`, `Stock`, `Description`, `Add_Date`, `BrandID`)
+            (`ProductTitle`, `PriceProduct`, `ProductImageName`, `ProductColor`, `Score`, `Stock`, `Description`, `Add_Date`, `BrandID`)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         );
 
