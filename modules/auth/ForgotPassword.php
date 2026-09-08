@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require "db.php";
-require "user_manager.php";
+require "config/db.php";
+require "classes/user_manager.php";
 
 $UserManage = new User($pdo);
 
