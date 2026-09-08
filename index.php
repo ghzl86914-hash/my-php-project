@@ -85,8 +85,8 @@
       <p class="text-body-secondary mb-4">به سامانه خوش آمدید. لطفاً برای ادامه وارد حساب خود شوید یا ثبت‌نام کنید.</p>
 
       <div class="d-grid gap-2">
-        <a href="modules/auth/login.php" class="btn btn-primary btn-lg py-2">ورود به حساب</a>
-        <a href="modules/auth/Register.php" class="btn btn-outline-secondary btn-lg py-2">ثبت نام</a>
+        <a href="../../modules/auth/login.php" class="btn btn-primary btn-lg py-2">ورود به حساب</a>
+        <a href="../../modules/auth/Register.php" class="btn btn-outline-secondary btn-lg py-2">ثبت نام</a>
       </div>
 
       <p class="mt-4 mb-0 text-body-secondary small">&copy; 2026 تمامی حقوق محفوظ است</p>
