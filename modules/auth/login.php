@@ -369,15 +369,15 @@ if (isset($_POST['login']) && empty($Errors))
                 Login
             </button>
             <div class="mt-3 text-center">
-                <a href="ForgotPassword.php">رمز عبور را فراموش کرده‌اید؟</a>
-                <a href="index.php?back=1" class="btn-back">بازگشت</a>
+                <a href="../../modules/auth/ForgotPassword.php">رمز عبور را فراموش کرده‌اید؟</a>
+                <a href="../../index.php?back=1" class="btn-back">بازگشت</a>
             </div>
         </form>
 
     </main>
-    <script src="../assets/js/ColorModes.js"></script>
+    <script src="../../assets/js/ColorModes.js"></script>
     <script
-        src="../assets/dist/js/bootstrap.bundle.min.js"
+        src="../../assets/js/bootstrap.bundle.min.js"
         class="astro-vvvwv3sm"></script>
 </body>
 
