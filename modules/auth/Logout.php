@@ -16,7 +16,7 @@ if (isset($_SESSION['Login'])) {
 
 echo "<script>
 alert('حساب کاربری با موفقیت حذف شد.');
-window.location='index.php';
+window.location='../../index.php';
 </script>";
 
 exit();
