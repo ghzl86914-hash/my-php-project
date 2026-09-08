@@ -78,7 +78,7 @@ if (isset($_POST['login']) && empty($Errors))
 
             if ($UserManage->IsAdmin($UserID)){
 
-                echo "<script>window.location='admin/admin_panel.php';</script>";
+                echo "<script>window.location='../admin/admin_panel.php';</script>";
 
             }
 
@@ -87,7 +87,7 @@ if (isset($_POST['login']) && empty($Errors))
 
             else{
 
-                echo "<script>window.location='modules/users/UserPanel.php';</script>";
+                echo "<script>window.location='../../modules/users/UserPanel.php';</script>";
             
                 exit();
             }
