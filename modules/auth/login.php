@@ -23,7 +23,6 @@ $Errors = [];
 $Username = '';
 $Password = '';
 
-
 // بررسی قفل بودن
 if (isset($_SESSION['login_locked_until'])) {
 
@@ -75,9 +74,19 @@ if (isset($_POST['login']) && empty($Errors))
             $_SESSION['Login'] = $ResultSelect['UserName'];
             $_SESSION['Username'] = $ResultSelect['UserName'];
 
+            if($Username === "admin"){
 
-            echo "<script>window.location='modules/users/UserPanel.php';</script>";
-            exit();
+                echo "<script>window.location='admin/admin_panel.php';</script>";
+            }
+
+            else{
+
+                echo "<script>window.location='modules/users/UserPanel.php';</script>";
+            
+                exit();
+            }
+
+            
         }
         else
         {   
