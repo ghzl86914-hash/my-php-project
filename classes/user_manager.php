@@ -89,8 +89,11 @@ class User
         if($stmt->rowCount() > 0 )
             {
                 return true;
-            }
-
+                } 
+        else
+            {
             return false;
+        }        
+              
     }
 }
