@@ -84,7 +84,7 @@ $Username = $_SESSION['Login'];
         </h1>
 
         <div class="menu">
-            <a href="../users/EditProfile.php">ویرایش پروفایل</a>
+            <a href="EditProfile.php">ویرایش پروفایل</a>
             <a href="../auth/Logout.php" class="logout">خروج از حساب</a>
         </div>
     </div>
