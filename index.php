@@ -6,8 +6,8 @@
     <title>خوش آمدید · صفحه اصلی</title>
     
     <!-- فایل‌های استایل بوت‌استرپ -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="assets/js/ColorModes.js"></script>
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../assets/js/ColorModes.js"></script>
 
     <style>
       body {
