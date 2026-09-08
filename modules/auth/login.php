@@ -87,7 +87,7 @@ if (isset($_POST['login']) && empty($Errors))
 
             else{
 
-                echo "<script>window.location='../modules/users/UserPanel.php';</script>";
+                echo "<script>window.location='../users/UserPanel.php';</script>";
             
                 exit();
             }
