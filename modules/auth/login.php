@@ -22,7 +22,6 @@ if (isset($_GET['back'])) {
 $Errors = [];
 $Username = '';
 $Password = '';
-$UserID = $pdo->prepare("SELECT UserID FROM `admin` WHERE UserID = ?");
 
 // بررسی قفل بودن
 if (isset($_SESSION['login_locked_until'])) {
@@ -64,6 +63,8 @@ if (isset($_POST['login']) && empty($Errors))
 
 
         $ResultSelect = $UserManage->GetUser($Username);
+
+        $UserID = $ResultSelect['UserID'];
 
 
         if($ResultSelect && password_verify($Password, $ResultSelect['Password'])) 
