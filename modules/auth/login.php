@@ -22,7 +22,6 @@ if (isset($_GET['back'])) {
 $Errors = [];
 $Username = '';
 $Password = '';
-$UserID = '';
 
 // بررسی قفل بودن
 if (isset($_SESSION['login_locked_until'])) {
@@ -75,7 +74,7 @@ if (isset($_POST['login']) && empty($Errors))
             $_SESSION['Login'] = $ResultSelect['UserName'];
             $_SESSION['Username'] = $ResultSelect['UserName'];
 
-            if ($UserManage->IsAdmin($UserID)){
+            if ($UserManage->IsAdmin($Username)){
 
                 echo "<script>window.location='admin/admin_panel.php';</script>";
 
