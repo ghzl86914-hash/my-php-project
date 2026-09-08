@@ -77,4 +77,20 @@ class User
 
         return $stmt->fetch();
     }
+
+    public function IsAdmin($UserID) 
+    {
+        $stmt = $this->pdo->prepare("SELECT UserID FROM `admin` WHERE UserID = ?");
+
+        $stmt->execute([
+            $UserID
+        ]);
+
+        if($stmt->rowCount() > 0 )
+            {
+                return true;
+            }
+
+            return false;
+    }
 }
