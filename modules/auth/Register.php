@@ -11,7 +11,8 @@ $Errors = [];
 $Username = '';
 $Password = '';
 $Email = '';
-$FullName = '';
+$FirstName = '';
+$LastName = '';
 $PhoneNumber = '';
 $Address = '';
 
@@ -20,7 +21,8 @@ if (isset($_POST['register'])) {
     $Username = $_POST['username'];
     $Password = $_POST['password'];
     $Email = $_POST['email'];
-    $FullName =  $_POST['fullname'];
+    $FirstName =  $_POST['firstname'];
+    $LastName =  $_POST['lastname'];
     $PhoneNumber = $_POST['phone'];
     $Address = $_POST['address'];
 
@@ -32,7 +34,7 @@ if (isset($_POST['register'])) {
         {
         $Password = password_hash($Password, PASSWORD_DEFAULT);
 
-        $resultadd = $UserManage->RegUser($Username, $Password, $Email, $FullName, $PhoneNumber, $Address);
+        $resultadd = $UserManage->RegUser($Username, $Password, $Email, $FirstName, $LastName , $PhoneNumber, $Address);
 
         if($resultadd === true)
         {
