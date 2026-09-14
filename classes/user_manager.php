@@ -9,7 +9,7 @@ class User
         $this->pdo = $db_connection;
     }
 
-    public function RegUser($UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$CreateDate)
+    public function RegUser($UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address)
     {
         $CheckUser = $this->pdo->prepare("SELECT UserID FROM user WHERE Username= ?");
 
@@ -20,8 +20,9 @@ class User
             return false;
         }
 
-        $stmt = $this->pdo->prepare("INSERT INTO user(`UserName`,`Password`,`Email`,`FirstName`,`LastName`,`PhoneNumber`,`Address`,`CreateDate`)VALUES(?,?,?,?,?,?,?,?)");
-        $is_success = $stmt->execute([$UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$CreateDate]);
+        $stmt = $this->pdo->prepare("INSERT INTO user(`UserName`,`Password`,`Email`,`FirstName`,`LastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?,?)");
+
+        $is_success = $stmt->execute([$UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address]);
         
         return $is_success;
             
