@@ -278,10 +278,18 @@ if (isset($_POST['register'])) {
             <div class="form-floating">
                 <input
                     type="text"
-                    name="fullname"
+                    name="first name"
                     class="form-control"
-                    placeholder="Full Name" />
-                <label>Full Name</label>
+                    placeholder="First Name" />
+                <label>First Name</label>
+            </div>
+            <div class="form-floating">
+                <input
+                    type="text"
+                    name="lastname"
+                    class="form-control"
+                    placeholder="Last Name" />
+                <label>Last Name</label>
             </div>
 
             <div class="form-floating">
