@@ -280,7 +280,7 @@ if (isset($_POST['register'])) {
             <div class="form-floating">
                 <input
                     type="text"
-                    name="first name"
+                    name="firstname"
                     class="form-control"
                     placeholder="First Name" />
                 <label>First Name</label>
