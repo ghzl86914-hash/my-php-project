@@ -69,7 +69,11 @@ if (isset($_POST['btnUpdate']))
     
         if($resultadd)
         {
-            $_SESSION['Login'] = $UserName;
+            if(!empty($UserName))
+            {
+                $_SESSION['Login'] = $UserName;
+            }
+
         echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
         }
         else

@@ -53,7 +53,7 @@ class User
     }
     public function EditProfile($Userex, $UserName = null, $Password = null, $Email = null, $FirstName = null, $LastName = null, $PhoneNumber = null, $Address = null, $UpdateAT = null)
     {
-        $stmt = $this->pdo->prepare("UPDATE user SET`UserName` = COALESCE(?, `UserName`),`Password` = COALESCE(?, `Password`),`Email` = COALESCE(?, `Email`), `FirstName` = COALESCE(?, `FirstName`), `LastName` = COALESCE(?, `LastName`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`), `UpdateAT` = COALESCE(?, `UpdateAT`)  WHERE `UserName` = ?");
+        $stmt = $this->pdo->prepare("UPDATE user SET `UserName` = COALESCE(?, `UserName`),`Password` = COALESCE(?, `Password`),`Email` = COALESCE(?, `Email`), `FirstName` = COALESCE(?, `FirstName`), `LastName` = COALESCE(?, `LastName`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`), `UpdateAT` = COALESCE(?, `UpdateAT`)  WHERE `UserName` = ?");
 
         return $stmt->execute([$UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$UpdateAT,$Userex]);
 
