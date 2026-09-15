@@ -47,7 +47,7 @@ if (isset($_POST['btnUpdate']))
     // اگر می‌خواد رمز عوض کنه
     if (!empty($NewPassword)) 
     {
-        if ($CurrentPassword === '') 
+        if (empty($CurrentPassword)) 
         {
             $Errors[] = "برای تغییر رمز، باید رمز فعلی را وارد کنید";
         } 
