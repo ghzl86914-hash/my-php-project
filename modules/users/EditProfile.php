@@ -31,7 +31,8 @@ if (isset($_POST['btnUpdate']))
 {
 
     $UserName = !empty($_POST['UserName']) ? trim($_POST['UserName']) : NULL;
-    $FirstNameAndLastName = !empty($_POST['$FirstNameAndLastName']) ? trim($_POST['$FirstNameAndLastName']) : NULL;
+    $FirstName = !empty($_POST['$FirstName']) ? trim($_POST['$FirstName']) : NULL;
+    $LastName = !empty($_POST['$LastName']) ? trim($_POST['$LastName']) : NULL;
     $Email = !empty($_POST['$Email']) ? trim($_POST['Email']) : NULL;
     $PhoneNumber = !empty($_POST['$PhoneNumber']) ? trim($_POST['PhoneNumber']) : NULL;
     $Address = !empty($_POST['$Address']) ? trim($_POST['Address']) : NULL;
