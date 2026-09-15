@@ -55,7 +55,7 @@ class User
     {
         $stmt = $this->pdo->prepare("UPDATE user SET`UserName` = COALESCE(?, `UserName`),`Password` = COALESCE(?, `Password`),`Email` = COALESCE(?, `Email`), `FirstName` = COALESCE(?, `FirstName`), `LastName` = COALESCE(?, `LastName`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`), `UpdateAT` = COALESCE(?, `UpdateAT`)  WHERE `UserName` = ?");
 
-        return $stmt->execute([$UserName,$Password,,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$UpdateAT,$Userex]);
+        return $stmt->execute([$UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$UpdateAT,$Userex]);
 
     }
     public function ForgotPassword($HashedPassword,$Email)
