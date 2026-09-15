@@ -31,12 +31,12 @@ if (isset($_POST['btnUpdate']))
 {
 
     $UserName = !empty($_POST['UserName']) ? trim($_POST['UserName']) : NULL;
-    $FirstName = !empty($_POST['$FirstName']) ? trim($_POST['$FirstName']) : NULL;
-    $LastName = !empty($_POST['$LastName']) ? trim($_POST['$LastName']) : NULL;
-    $Email = !empty($_POST['$Email']) ? trim($_POST['Email']) : NULL;
-    $PhoneNumber = !empty($_POST['$PhoneNumber']) ? trim($_POST['PhoneNumber']) : NULL;
-    $Address = !empty($_POST['$Address']) ? trim($_POST['Address']) : NULL;
-    $CurrentPassword = !empty($_POST['$CurrentPassword']) ? trim($_POST['$CurrentPassword']) : NULL;
+    $FirstName = !empty($_POST['FirstName']) ? trim($_POST['FirstName']) : NULL;
+    $LastName = !empty($_POST['LastName']) ? trim($_POST['LastName']) : NULL;
+    $Email = !empty($_POST['Email']) ? trim($_POST['Email']) : NULL;
+    $PhoneNumber = !empty($_POST['PhoneNumber']) ? trim($_POST['PhoneNumber']) : NULL;
+    $Address = !empty($_POST['Address']) ? trim($_POST['Address']) : NULL;
+    $CurrentPassword = !empty($_POST['CurrentPassword']) ? trim($_POST['CurrentPassword']) : NULL;
     $NewPassword = !empty($_POST['NewPassword']) ? trim($_POST['NewPassword']) : NULL;
 
     // اعتبارسنجی ایمیل
@@ -66,7 +66,7 @@ if (isset($_POST['btnUpdate']))
         $timestamp = time();
 
         $resultadd = $UserManage->EditProfile($CurrentUserName,$UserName,$HashedPassword,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$timestamp);
-        
+    
         if($resultadd)
         {
             $_SESSION['Login'] = $UserName;
