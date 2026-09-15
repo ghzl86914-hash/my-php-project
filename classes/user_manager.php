@@ -51,11 +51,11 @@ class User
         return $stmt->rowCount();
 
     }
-    public function EditProfile($Userex, $UserName = null, $FirstName = null, $LastName = null, $Email = null, $PhoneNumber = null, $Address = null, $Password = null, $UpdateAT = null)
+    public function EditProfile($Userex, $UserName = null, $Password = null, $Email = null, $FirstName = null, $LastName = null, $PhoneNumber = null, $Address = null, $UpdateAT = null)
     {
-        $stmt = $this->pdo->prepare("UPDATE user SET`UserName` = COALESCE(?, `UserName`),`FirstName` = COALESCE(?, `FirstName`), `LastName` = COALESCE(?, `LastName`),`Email` = COALESCE(?, `Email`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`),`Password` = COALESCE(?, `Password`), `UpdateAT` = COALESCE(?, `UpdateAT`)  WHERE `UserName` = ?");
+        $stmt = $this->pdo->prepare("UPDATE user SET`UserName` = COALESCE(?, `UserName`),`Password` = COALESCE(?, `Password`),`Email` = COALESCE(?, `Email`), `FirstName` = COALESCE(?, `FirstName`), `LastName` = COALESCE(?, `LastName`),`PhoneNumber` = COALESCE(?, `PhoneNumber`),`Address` = COALESCE(?, `Address`), `UpdateAT` = COALESCE(?, `UpdateAT`)  WHERE `UserName` = ?");
 
-        return $stmt->execute([$UserName,$FirstName,$LastName,$Email,$PhoneNumber,$Address,$Password,$UpdateAT,$Userex]);
+        return $stmt->execute([$UserName,$Password,,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$UpdateAT,$Userex]);
 
     }
     public function ForgotPassword($HashedPassword,$Email)
