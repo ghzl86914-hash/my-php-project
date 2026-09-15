@@ -34,7 +34,9 @@ if (isset($_POST['register'])) {
         {
         $Password = password_hash($Password, PASSWORD_DEFAULT);
 
-        $resultadd = $UserManage->RegUser($Username, $Password, $Email, $FirstName, $LastName , $PhoneNumber, $Address);
+        $timestamp = time();
+
+        $resultadd = $UserManage->RegUser($Username, $Password, $Email, $FirstName, $LastName , $PhoneNumber, $Address, $timestamp);
 
         if($resultadd === true)
         {
