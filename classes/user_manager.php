@@ -20,9 +20,9 @@ class User
             return false;
         }
 
-        $stmt = $this->pdo->prepare("INSERT INTO user(`UserName`,`Password`,`Email`,`FirstName`,`LastName`,`PhoneNumber`,`Address`)VALUES(?,?,?,?,?,?,?)");
+        $stmt = $this->pdo->prepare("INSERT INTO user(`UserName`,`Password`,`Email`,`FirstName`,`LastName`,`PhoneNumber`,`Address`,`CreateDate`)VALUES(?,?,?,?,?,?,?,?)");
 
-        $is_success = $stmt->execute([$UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address]);
+        $is_success = $stmt->execute([$UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$CreateDate]);
         
         return $is_success;
             
