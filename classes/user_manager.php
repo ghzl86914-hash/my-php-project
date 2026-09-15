@@ -9,7 +9,7 @@ class User
         $this->pdo = $db_connection;
     }
 
-    public function RegUser($UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address)
+    public function RegUser($UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$CreateDate)
     {
         $CheckUser = $this->pdo->prepare("SELECT UserID FROM user WHERE Username= ?");
 

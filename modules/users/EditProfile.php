@@ -75,6 +75,8 @@ if (isset($_POST['btnUpdate']))
             }
 
         echo "<script>alert('ویرایش با موفقیت انجام شد');</script>";
+        header("Location: /users/UserPanel.php");
+        exit();
         }
         else
         {
