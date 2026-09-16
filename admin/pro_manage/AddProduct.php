@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require "config/db.php";
-require "classes/user_manager.php";
+require "../../config/db.php";
+require "../../classes/user_manager.php";
 
 $ProductManage = new  Product($pdo);
 
