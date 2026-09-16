@@ -2,7 +2,7 @@
 session_start();
 
 require "../../config/db.php";
-require "../../classes/user_manager.php";
+require "../../classes/product_manager.php";
 
 $ProductManage = new  Product($pdo);
 
