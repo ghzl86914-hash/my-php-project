@@ -21,8 +21,6 @@ class User
         $is_success = $stmt->execute([$UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$CreateDate]);
         
         return $is_success;
-            
-        ;
     }
 
     public function GetUser($UserName)
