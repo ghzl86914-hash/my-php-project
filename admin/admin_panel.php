@@ -287,7 +287,7 @@
                 <h2 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">خوش آمدید، مدیر گرامی 👋</h2>
                 <p style="color: var(--text-muted); font-size: 0.9rem;">گزارش وضعیت فروشگاه اکسسوری، سفارشات اخیر و کنترل انبار در یک نگاه.</p>
             </div>
-            <a href="AddProduct.php" class="btn-add-product">
+            <a href="pro_manage/AddProduct.php" class="btn-add-product">
                 <i class="bi bi-plus-lg"></i>
                 <span>محصول جدید</span>
             </a>
