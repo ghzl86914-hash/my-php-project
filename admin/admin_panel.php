@@ -3,330 +3,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پنل مدیریت | گالری اکسسوری</title>
-    <!-- Bootstrap 5 RTL CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/dist/css/bootstrap.rtl.min.css">
+    <title>پنل مدیریت اکسسوری</title>
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- فونت وزیرمتن -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
 
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         :root {
-            --primary-accent: #c49b63; /* رنگ رزگلد/طلایی شیک مناسب اکسسوری */
+            --primary: #c49b63;
             --primary-hover: #b08751;
-            --bg-body: #fbfbfb;
+            --bg-body: #f8f9fa;
             --card-bg: #ffffff;
-            --text-main: #2b2d42;
-            --text-muted: #8d99ae;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --border-color: #eee;
         }
 
         body {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-body);
-            color: var(--text-main);
-            min-height: 100vh;
+            color: var(--text-dark);
+            line-height: 1.5;
+            direction: rtl;
         }
 
-        /* کارت‌ها و المان‌های مینیمال */
-        .card-custom {
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 16px;
-            background: var(--card-bg);
-            transition: all 0.25s ease-in-out;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        /* کانتینر و ناوبری */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px 24px;
         }
 
-        .card-custom:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        .navbar {
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .btn-accent {
-            background-color: var(--primary-accent);
+        .brand {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .brand i {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .btn-exit {
+            color: #dc3545;
+            border: 1px solid #f8d7da;
+            background: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn-exit:hover {
+            background: #dc3545;
             color: #fff;
-            border: none;
+        }
+
+        /* بخش خوش‌آمدگویی */
+        .welcome-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-add-product {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 20px;
             border-radius: 10px;
-            padding: 9px 18px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             font-weight: 500;
             transition: 0.2s;
         }
 
-        .btn-accent:hover {
-            background-color: var(--primary-hover);
-            color: #fff;
+        .btn-add-product:hover {
+            background: var(--primary-hover);
         }
 
-        /* دکمه‌های ناوبری سریع */
-        .quick-action-card {
+        /* گرید کارت‌های آمار */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .badge-warning { background: #fff8eb; color: #b45309; }
+        .badge-success { background: #ecfdf5; color: #047857; }
+        .badge-danger { background: #fef2f2; color: #b91c1c; }
+        .badge-muted { background: #f3f4f6; color: #4b5563; }
+
+        .stat-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        /* دسترسی‌های سریع */
+        .section-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .quick-item {
+            background: #fff;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
-            padding: 16px;
+            gap: 14px;
             text-decoration: none;
-            color: var(--text-main);
-            border-radius: 14px;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            background: #fff;
+            color: var(--text-dark);
             transition: all 0.2s ease;
         }
 
-        .quick-action-card:hover {
-            background: #faf7f2;
-            border-color: rgba(196, 155, 99, 0.2);
-            color: var(--primary-accent);
+        .quick-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
         .icon-box {
             width: 44px;
             height: 44px;
             border-radius: 10px;
+            background: #faf7f2;
+            color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            margin-left: 12px;
-            background: #f8f8f8;
-            color: var(--primary-accent);
+            font-size: 1.25rem;
+            flex-shrink: 0;
         }
 
-        /* برچسب‌های وضعیت */
-        .badge-soft-warning {
-            background-color: #fff8eb;
-            color: #d97706;
+        .quick-item h4 {
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+            font-weight: 600;
         }
 
-        .badge-soft-success {
-            background-color: #ecfdf5;
-            color: #059669;
+        .quick-item span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* دو ستون پایین */
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .content-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            padding: 22px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-top: 14px;
+        }
+
+        th {
+            text-align: right;
+            padding: 10px 12px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #f9f9f9;
+        }
+
+        .alert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .alert-item:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 900px) {
+            .bottom-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- نوبار بالا -->
-    <nav class="navbar navbar-expand-lg bg-white border-bottom border-light sticky-top py-3">
-        <div class="container-fluid px-lg-5">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
-                <i class="bi bi-gem text-warning fs-4"></i>
-                <span class="fs-5 tracking-wide">مدیریت گالری اکسسوری</span>
-            </a>
-            <div class="d-flex align-items-center gap-3">
-                <span class="text-muted small d-none d-sm-inline">تاریخ امروز: <?= date('Y/m/d') ?></span>
-                <a href="logout.php" class="btn btn-sm btn-outline-danger rounded-pill px-3">
-                    <i class="bi bi-box-arrow-right me-1"></i> خروج
-                </a>
-            </div>
+    <!-- نوار ناوبری -->
+    <nav class="navbar">
+        <a href="#" class="brand">
+            <i class="bi bi-gem"></i>
+            <span>پنل مدیریت گالری اکسسوری</span>
+        </a>
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">امروز: <?= date('Y/m/d') ?></span>
+            <a href="logout.php" class="btn-exit"><i class="bi bi-box-arrow-right"></i> خروج</a>
         </div>
     </nav>
 
-    <div class="container-fluid px-lg-5 py-4">
+    <div class="container">
 
-        <!-- بنر خوش‌آمدگویی -->
-        <div class="card-custom p-4 mb-4 bg-white border-0">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+        <!-- خوش‌آمدگویی -->
+        <div class="welcome-card">
+            <div>
+                <h2 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">خوش آمدید، مدیر گرامی 👋</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">گزارش وضعیت فروشگاه اکسسوری، سفارشات اخیر و کنترل انبار در یک نگاه.</p>
+            </div>
+            <a href="AddProduct.php" class="btn-add-product">
+                <i class="bi bi-plus-lg"></i>
+                <span>محصول جدید</span>
+            </a>
+        </div>
+
+        <!-- کارت‌های آمار -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span>سفارشات جدید</span>
+                    <span class="badge badge-warning">امروز</span>
+                </div>
+                <h3>۱۸ سفارش</h3>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span>فروش ماه جاری</span>
+                    <span class="badge badge-success">+۱۲٪</span>
+                </div>
+                <h3>۴۸,۵۰۰,۰۰۰ <small style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">تومان</small></h3>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span>کسری موجودی</span>
+                    <span class="badge badge-danger">هشدار انبار</span>
+                </div>
+                <h3>۴ قلم کالا</h3>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span>تیکت‌های باز</span>
+                    <span class="badge badge-muted">پشتیبانی</span>
+                </div>
+                <h3>۳ تیکت</h3>
+            </div>
+        </div>
+
+        <!-- دسترسی‌های سریع -->
+        <div class="section-title">دسترسی‌های سریع</div>
+        <div class="quick-grid">
+            <a href="manage_user.php" class="quick-item">
+                <div class="icon-box"><i class="bi bi-people"></i></div>
                 <div>
-                    <h3 class="fw-bold mb-1">خوش آمدید، مدیر گرامی 👋</h3>
-                    <p class="text-muted mb-0">گزارش وضعیت فروشگاه اکسسوری، سفارشات اخیر و کنترل انبار در یک نگاه.</p>
+                    <h4>کاربران</h4>
+                    <span>مشاهده و ویرایش</span>
                 </div>
-                <div class="d-flex gap-2">
-                    <a href="AddProduct.php" class="btn btn-accent d-flex align-items-center gap-2">
-                        <i class="bi bi-plus-lg"></i>
-                        <span>محصول جدید</span>
-                    </a>
+            </a>
+
+            <a href="AddProduct.php" class="quick-item">
+                <div class="icon-box"><i class="bi bi-box-seam"></i></div>
+                <div>
+                    <h4>محصولات</h4>
+                    <span>ثبت و مدیریت</span>
                 </div>
-            </div>
+            </a>
+
+            <a href="reports.php" class="quick-item">
+                <div class="icon-box"><i class="bi bi-graph-up-arrow"></i></div>
+                <div>
+                    <h4>آمار و تحلیل</h4>
+                    <span>گزارشات فروش</span>
+                </div>
+            </a>
+
+            <a href="finance.php" class="quick-item">
+                <div class="icon-box"><i class="bi bi-wallet2"></i></div>
+                <div>
+                    <h4>امور مالی</h4>
+                    <span>تراکنش‌ها و حساب</span>
+                </div>
+            </a>
+
+            <a href="tickets.php" class="quick-item">
+                <div class="icon-box"><i class="bi bi-chat-left-dots"></i></div>
+                <div>
+                    <h4>پشتیبانی</h4>
+                    <span>پاسخ به تیکت‌ها</span>
+                </div>
+            </a>
+
+            <a href="discounts.php" class="quick-item">
+                <div class="icon-box"><i class="bi bi-percent"></i></div>
+                <div>
+                    <h4>کد تخفیف</h4>
+                    <span>کمپین و جشنواره</span>
+                </div>
+            </a>
         </div>
 
-        <!-- کارت‌های آمار سریع کلیدی -->
-        <div class="row g-3 mb-4">
-            <div class="col-6 col-md-3">
-                <div class="card-custom p-3 h-100">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="text-muted small">سفارشات جدید</span>
-                        <span class="badge badge-soft-warning px-2 py-1 rounded-pill">امروز</span>
-                    </div>
-                    <h4 class="fw-bold mb-0">۱۸ سفارش</h4>
+        <!-- بخش پایینی: سفارش‌ها و انبار -->
+        <div class="bottom-grid">
+            <div class="content-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h4 style="font-size: 1rem; font-weight: 700;">سفارش‌های ثبت شده اخیر</h4>
+                    <a href="orders.php" style="color: var(--primary); text-decoration: none; font-size: 0.85rem;">مشاهده همه</a>
                 </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card-custom p-3 h-100">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="text-muted small">فروش ماه جاری</span>
-                        <span class="badge badge-soft-success px-2 py-1 rounded-pill">+۱۲٪</span>
-                    </div>
-                    <h4 class="fw-bold mb-0">۴۸,۵۰۰,۰۰۰ <small class="fs-6 fw-normal text-muted">تومان</small></h4>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card-custom p-3 h-100">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="text-muted small">کسری موجودی</span>
-                        <span class="badge bg-danger-subtle text-danger px-2 py-1 rounded-pill">هشدار</span>
-                    </div>
-                    <h4 class="fw-bold mb-0">۴ قلم کالا</h4>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card-custom p-3 h-100">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="text-muted small">تیکت‌های باز</span>
-                        <span class="badge bg-secondary-subtle text-secondary px-2 py-1 rounded-pill">پشتیبانی</span>
-                    </div>
-                    <h4 class="fw-bold mb-0">۳ تیکت</h4>
-                </div>
-            </div>
-        </div>
-
-        <!-- منو و دسترسی‌های سریع -->
-        <div class="mb-4">
-            <h6 class="text-muted fw-bold mb-3">دسترسی‌های سریع</h6>
-            <div class="row g-3">
-                <!-- مدیریت کاربران -->
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="manage_user.php" class="quick-action-card">
-                        <div class="icon-box"><i class="bi bi-people"></i></div>
-                        <div>
-                            <div class="fw-bold">کاربران</div>
-                            <small class="text-muted">مشاهده و دسترسی</small>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- مدیریت محصولات -->
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="AddProduct.php" class="quick-action-card">
-                        <div class="icon-box"><i class="bi bi-box-seam"></i></div>
-                        <div>
-                            <div class="fw-bold">محصولات</div>
-                            <small class="text-muted">افزودن و ویرایش</small>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- آمار و گزارشات -->
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="reports.php" class="quick-action-card">
-                        <div class="icon-box"><i class="bi bi-graph-up-arrow"></i></div>
-                        <div>
-                            <div class="fw-bold">آمار</div>
-                            <small class="text-muted">تحلیل فروش و رشد</small>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- امور مالی -->
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="finance.php" class="quick-action-card">
-                        <div class="icon-box"><i class="bi bi-wallet2"></i></div>
-                        <div>
-                            <div class="fw-bold">امور مالی</div>
-                            <small class="text-muted">تراکنش‌ها و تسویه</small>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- پشتیبانی و تیکت -->
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="tickets.php" class="quick-action-card">
-                        <div class="icon-box"><i class="bi bi-chat-left-dots"></i></div>
-                        <div>
-                            <div class="fw-bold">پشتیبانی</div>
-                            <small class="text-muted">تیکت و پیام‌ها</small>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- تخفیف‌ها و کوپن (مهم برای اکسسوری) -->
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="discounts.php" class="quick-action-card">
-                        <div class="icon-box"><i class="bi bi-percent"></i></div>
-                        <div>
-                            <div class="fw-bold">کد تخفیف</div>
-                            <small class="text-muted">کمپین‌های فروش</small>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- جدول سفارشات اخیر و هشدار انبار زیورآلات -->
-        <div class="row g-4">
-            <!-- سفارشات اخیر -->
-            <div class="col-lg-8">
-                <div class="card-custom p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h6 class="fw-bold mb-0">آخرین سفارش‌های ثبت‌شده</h6>
-                        <a href="orders.php" class="text-decoration-none small text-muted">مشاهده همه <i class="bi bi-chevron-left"></i></a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light text-muted small">
-                                <tr>
-                                    <th>شناسه</th>
-                                    <th>نام مشتری</th>
-                                    <th>اقلام خرید</th>
-                                    <th>مبلغ</th>
-                                    <th>وضعیت</th>
-                                    <th>عملیات</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#1042</td>
-                                    <td>سارا مرادی</td>
-                                    <td>دستبند کارتیه طلا، انگشتر مینیمال</td>
-                                    <td>۱,۸۵۰,۰۰۰ تومان</td>
-                                    <td><span class="badge badge-soft-warning rounded-pill">در انتظار ارسال</span></td>
-                                    <td><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>#1041</td>
-                                    <td>علی حسینی</td>
-                                    <td>ساعت کلاسیک چرمی مشکی</td>
-                                    <td>۳,۴۰۰,۰۰۰ تومان</td>
-                                    <td><span class="badge badge-soft-success rounded-pill">تکمیل شده</span></td>
-                                    <td><button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>شناسه</th>
+                                <th>مشتری</th>
+                                <th>اقلام</th>
+                                <th>مبلغ</th>
+                                <th>وضعیت</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#۱۰۴۲</td>
+                                <td>سارا مرادی</td>
+                                <td>دستبند کارتیه، انگشتر مینیمال</td>
+                                <td>۱,۸۵۰,۰۰۰ تومان</td>
+                                <td><span class="badge badge-warning">در انتظار ارسال</span></td>
+                            </tr>
+                            <tr>
+                                <td>#۱۰۴۱</td>
+                                <td>علی حسینی</td>
+                                <td>ساعت کلاسیک چرمی مشکی</td>
+                                <td>۳,۴۰۰,۰۰۰ تومان</td>
+                                <td><span class="badge badge-success">ارسال شده</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <!-- هشدارهای موجودی زیورآلات / اکسسوری -->
-            <div class="col-lg-4">
-                <div class="card-custom p-4">
-                    <h6 class="fw-bold mb-3">کنترل موجودی انبار اکسسوری</h6>
-                    <div class="d-flex flex-column gap-3">
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                            <div>
-                                <p class="mb-0 fw-medium small">گردنبند نقره طرح ماه</p>
-                                <span class="text-danger small">تنها ۲ عدد باقی مانده</span>
-                            </div>
-                            <a href="AddProduct.php?id=12" class="btn btn-sm btn-outline-secondary">شارژ</a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                            <div>
-                                <p class="mb-0 fw-medium small">گوشواره مرواریدی پروانه</p>
-                                <span class="text-danger small">اتمام موجودی</span>
-                            </div>
-                            <a href="AddProduct.php?id=18" class="btn btn-sm btn-outline-secondary">شارژ</a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <p class="mb-0 fw-medium small">باکس کادویی مخمل لوکس</p>
-                                <span class="text-warning small">تنها ۳ عدد باقی مانده</span>
-                            </div>
-                            <a href="AddProduct.php?id=25" class="btn btn-sm btn-outline-secondary">شارژ</a>
-                        </div>
+            <div class="content-card">
+                <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 16px;">موجودی رو به اتمام</h4>
+                <div class="alert-item">
+                    <div>
+                        <div style="font-size: 0.9rem; font-weight: 600;">گردنبند نقره طرح ماه</div>
+                        <span style="font-size: 0.8rem; color: #dc3545;">تنها ۲ عدد باقی مانده</span>
                     </div>
+                    <a href="AddProduct.php?id=12" style="font-size: 0.8rem; color: var(--primary); text-decoration: none; border: 1px solid var(--border-color); padding: 4px 10px; border-radius: 6px;">شارژ</a>
+                </div>
+                <div class="alert-item">
+                    <div>
+                        <div style="font-size: 0.9rem; font-weight: 600;">گوشواره مرواریدی</div>
+                        <span style="font-size: 0.8rem; color: #dc3545;">اتمام موجودی</span>
+                    </div>
+                    <a href="AddProduct.php?id=18" style="font-size: 0.8rem; color: var(--primary); text-decoration: none; border: 1px solid var(--border-color); padding: 4px 10px; border-radius: 6px;">شارژ</a>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
