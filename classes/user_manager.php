@@ -11,11 +11,7 @@ class User
 
     public function RegUser($UserName,$Password,$Email,$FirstName,$LastName,$PhoneNumber,$Address,$CreateDate)
     {
-        $CheckUser = $this->pdo->prepare("SELECT UserID FROM user WHERE Username= ?");
-
-        $CheckUser->execute([$UserName]);
-
-        if($CheckUser->rowCount() > 0 )
+        if ($this->CheckUser($UserName) > 0) 
         {
             return false;
         }
@@ -100,7 +96,7 @@ class User
 
     public function DeleteUser($id)
     {
-        $stmt = $this->pdo->prepare("DELETE FROM user WHERE id = ?");
+        $stmt = $this->pdo->prepare("DELETE FROM `user` WHERE `id` = ? LIMIT 1");
 
         return $stmt->execute([$id]);
     }
