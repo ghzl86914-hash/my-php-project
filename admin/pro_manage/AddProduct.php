@@ -6,10 +6,10 @@ require "../../classes/product_manager.php";
 
 $ProductManage = new  Product($pdo);
 
-if (!isset($_SESSION['Login'])) {
-    header("Location: login.php");
-    exit();
-}
+// if (!isset($_SESSION['Login'])) {
+//     header("Location: login.php");
+//     exit();
+// }
 
 
 $CurrentUserName = $_SESSION['Login'];
