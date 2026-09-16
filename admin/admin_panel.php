@@ -339,7 +339,7 @@
                 </div>
             </a>
 
-            <a href="AddProduct.php" class="quick-item">
+            <a href="ProList.php" class="quick-item">
                 <div class="icon-box"><i class="bi bi-box-seam"></i></div>
                 <div>
                     <h4>محصولات</h4>
