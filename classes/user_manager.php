@@ -97,4 +97,11 @@ class User
         }        
               
     }
+
+    public function DeleteUser($id)
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM user WHERE id = ?");
+
+        return $stmt->execute([$id]);
+    }
 }
