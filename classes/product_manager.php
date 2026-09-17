@@ -48,6 +48,20 @@ class Product
 
         return $stmt->fetch();
     }
+    public function ListCB($table)
+    {
+        $allowed_tables = ['category,brand'];
+
+        if(!in_array($table,$allowed_tables))
+        {
+            throw new InvalidArgumentException("نام جدول نامعتبر است");
+        }
+
+        $stmt = $this->pdo->prepare("SELECT * FROM `{$table}`");
+        $stmt->execute([$table]);
+
+        return $stmt->fetch();
+    }
 }
 
 ?>
