@@ -361,7 +361,7 @@ if (isset($_POST['btnAddProduct'])) {
                         <!-- حلقه PHP دسته‌بندی‌ها اینجا قرار می‌گیرد -->
                         <?php if (!empty($Categories)): ?>
                             <?php foreach ($Categories as $cat): ?>
-                                <option value="<?php echo $cat['id']; ?>"><?php echo $cat['title']; ?></option>
+                                <option value="<?php echo $cat['CategoryID']; ?>"><?php echo $cat['CategoryName']; ?></option>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </select>
@@ -374,7 +374,7 @@ if (isset($_POST['btnAddProduct'])) {
                         <!-- حلقه PHP برندها اینجا قرار می‌گیرد -->
                         <?php if (!empty($Brands)): ?>
                             <?php foreach ($Brands as $brand): ?>
-                                <option value="<?php echo $brand['id']; ?>"><?php echo $brand['name']; ?></option>
+                                <option value="<?php echo $brand['BrandID']; ?>"><?php echo $brand['Name']; ?></option>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </select>
