@@ -215,6 +215,42 @@ if (isset($_POST['btnAddProduct'])) {
                 <div class="hint">فرمت‌های مجاز: JPG, PNG, WEBP — حداکثر ۲ مگابایت</div>
             </div>
 
+            <div class="form-group">
+                <label>رنگ محصول</label>
+                <input type="file" name="ProductImage" accept="image/*">
+                <div class="hint">فرمت‌های مجاز: JPG, PNG, WEBP — حداکثر ۲ مگابایت</div>
+            </div>
+
+            <div class="form-group">
+                <label>دسته بندی</label>
+                <input type="file" name="ProductImage" accept="image/*">
+                <div class="hint">فرمت‌های مجاز: JPG, PNG, WEBP — حداکثر ۲ مگابایت</div>
+            </div>
+
+            <div class="form-group">
+                <label>امتیاز</label>
+                <input type="file" name="ProductImage" accept="image/*">
+                <div class="hint">فرمت‌های مجاز: JPG, PNG, WEBP — حداکثر ۲ مگابایت</div>
+            </div>
+
+            <div class="form-group">
+                <label>موجودی</label>
+                <input type="file" name="ProductImage" accept="image/*">
+                <div class="hint">فرمت‌های مجاز: JPG, PNG, WEBP — حداکثر ۲ مگابایت</div>
+            </div>
+
+            <div class="form-group">
+                <label>توضیحات</label>
+                <input type="file" name="ProductImage" accept="image/*">
+                <div class="hint">فرمت‌های مجاز: JPG, PNG, WEBP — حداکثر ۲ مگابایت</div>
+            </div>
+
+            <div class="form-group">
+                <label>نوع برند</label>
+                <input type="file" name="ProductImage" accept="image/*">
+                <div class="hint">فرمت‌های مجاز: JPG, PNG, WEBP — حداکثر ۲ مگابایت</div>
+            </div>
+
             <button type="submit" name="btnAddProduct" class="btn">ثبت محصول</button>
         </form>
 
