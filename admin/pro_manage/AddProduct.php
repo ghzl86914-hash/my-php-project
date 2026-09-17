@@ -15,6 +15,14 @@ if (!isset($_SESSION['Login'])) {
 $Errors = [];
 $Success = false;
 
+try{
+    $Categories = $product->listCB('category');
+    $Brand = $product->listCB('brand');
+}
+catch(Exception $e){
+    $Errors[] = "خطا در دریافت لیست دسته بندی و برند".$e->getmessage();
+}
+
 if (isset($_POST['btnAddProduct'])) {
 
     $Title = trim($_POST['ProductTitle']);
@@ -63,14 +71,13 @@ if (isset($_POST['btnAddProduct'])) {
     if (count($Errors) == 0) {
 
         
-           $resultadd = $ProductManage->AddProduct($Title, $Price, $ImageName, $Color, $CategoryID, $Score, $Stock, $Description, $Add_Date, $BrandID);
+           $resultadd = $ProductManage->AddProduct($Title, $Price, $ImageName, $ColorProduct, $CategoryProduct, $ScoreProduct, $StockProduct, $Description, $Add_Date, $BrandProduct);
     }else{
         $Errors[] = "خطا در ذخیره محصول: ";
     }
             
         
     }
-////;adsfjkkl;skgl;dfkg;d
 ?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
