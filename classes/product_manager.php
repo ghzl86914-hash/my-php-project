@@ -50,7 +50,7 @@ class Product
     }
     public function ListCB($table)
     {
-        $allowed_tables = ['category,brand'];
+        $allowed_tables = ['category','brand'];
 
         if(!in_array($table,$allowed_tables))
         {
