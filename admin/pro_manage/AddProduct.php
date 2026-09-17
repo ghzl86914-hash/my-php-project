@@ -73,116 +73,247 @@ if (isset($_POST['btnAddProduct'])) {
 ////;adsfjkkl;skgl;dfkg;d
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
-    <title>افزودن محصول</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>افزودن محصول جدید</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --border-focus: #6366f1;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f2f4f8;
-            direction: rtl;
+            background-color: var(--bg);
+            color: var(--text-main);
             margin: 0;
-            padding: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .box {
-            width: 480px;
-            margin: 50px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            max-width: 680px;
+            background: var(--card-bg);
+            padding: 36px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-area {
+            text-align: center;
+            margin-bottom: 28px;
         }
 
         h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #333;
+            margin: 0 0 6px 0;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
         }
 
         .form-group {
-            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
         }
 
         .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-size: 15px;
+            margin-bottom: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
         }
 
-        .form-group input[type="text"],
-        .form-group input[type="number"],
-        .form-group input[type="file"] {
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        select,
+        textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
             font-size: 14px;
-            box-sizing: border-box;
+            font-family: inherit;
+            color: var(--text-main);
+            background-color: #fdfdfd;
+            transition: all 0.2s ease;
             outline: none;
         }
 
-        .form-group input:focus {
-            border-color: #4a90e2;
-            box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--border-focus);
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
         }
 
-        .btn {
-            width: 100%;
-            padding: 13px;
-            background-color: #4a90e2;
-            color: white;
+        /* استایل اختصاصی پالت رنگ */
+        .color-picker-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            padding: 6px 12px;
+            background-color: #fdfdfd;
+        }
+
+        input[type="color"] {
+            -webkit-appearance: none;
             border: none;
+            width: 34px;
+            height: 34px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
+            background: none;
+            padding: 0;
         }
 
-        .btn:hover {
-            background-color: #357abd;
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
         }
 
-        .error {
-            background-color: #ffe0e0;
-            color: #c00;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 14px;
+        input[type="color"]::-webkit-color-swatch {
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 6px;
         }
 
-        .success {
-            background-color: #e0ffe0;
-            color: #080;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 20px;
+        .color-picker-label {
+            font-size: 13px;
+            color: var(--text-muted);
         }
 
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #4a90e2;
-            text-decoration: none;
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        select {
+            cursor: pointer;
         }
 
         .hint {
             font-size: 12px;
-            color: #888;
+            color: var(--text-muted);
             margin-top: 5px;
+        }
+
+        .btn {
+            grid-column: span 2;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
+            transition: background-color 0.2s ease, transform 0.05s ease;
+            margin-top: 8px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn:active {
+            transform: scale(0.99);
+        }
+
+        .error {
+            background-color: #fef2f2;
+            color: #dc2626;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 13.5px;
+            border: 1px solid #fee2e2;
+        }
+
+        .success {
+            background-color: #f0fdf4;
+            color: #16a34a;
+            padding: 12px 16px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            border: 1px solid #dcfce7;
+        }
+
+        .back-link {
+            display: inline-block;
+            text-align: center;
+            margin-top: 22px;
+            color: var(--text-muted);
+            font-size: 13.5px;
+            text-decoration: none;
+            width: 100%;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 580px) {
+            .box {
+                padding: 24px 18px;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width,
+            .btn {
+                grid-column: span 1;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="box">
-        <h2>افزودن محصول جدید</h2>
+        <div class="header-area">
+            <h2>افزودن محصول جدید</h2>
+            <p class="subtitle">اطلاعات کالا را با دقت وارد فرمایید</p>
+        </div>
 
         <?php if (!empty($Errors)): ?>
             <div class="error">
@@ -192,63 +323,85 @@ if (isset($_POST['btnAddProduct'])) {
             </div>
         <?php endif; ?>
 
-        <?php if ($Success): ?>
+        <?php if (!empty($Success)): ?>
             <div class="success">
                 محصول با موفقیت اضافه شد!
             </div>
         <?php endif; ?>
 
         <form method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>عنوان محصول:</label>
-                <input type="text" name="ProductTitle" placeholder="" required>
-            </div>
+            <div class="form-grid">
+                
+                <div class="form-group full-width">
+                    <label for="ProductTitle">عنوان محصول</label>
+                    <input type="text" id="ProductTitle" name="ProductTitle" placeholder="مثلاً: گوشی موبایل سامسونگ مدل A54" required>
+                </div>
 
-            <div class="form-group">
-                <label>قیمت (تومان):</label>
-                <input type="number" name="PriceProduct" placeholder="" required>
-            </div>
+                <div class="form-group">
+                    <label for="PriceProduct">قیمت (تومان)</label>
+                    <input type="number" id="PriceProduct" name="PriceProduct" placeholder="مثلاً: 18500000" required>
+                </div>
 
-            <div class="form-group">
-                <label>عکس محصول (اختیاری):</label>
-                <input type="file" name="ProductImage" accept="image/*">
-                <div class="hint">فرمت‌های مجاز: JPG, PNG, WEBP — حداکثر ۲ مگابایت</div>
-            </div>
+                <div class="form-group">
+                    <label for="StockProduct">موجودی در انبار</label>
+                    <input type="number" id="StockProduct" name="StockProduct" min="0" placeholder="تعداد موجودی" required>
+                </div>
 
-            <div class="form-group">
-                <label>رنگ محصول</label>
-                <input type="text" name="ProductTitle" placeholder="" required>
-            </div>
+                <div class="form-group">
+                    <label for="CategoryProduct">دسته‌بندی</label>
+                    <select id="CategoryProduct" name="CategoryProduct" required>
+                        <option value="" disabled selected>انتخاب دسته‌بندی...</option>
+                        <!-- حلقه PHP دسته‌بندی‌ها اینجا قرار می‌گیرد -->
+                        <?php if (!empty($Categories)): ?>
+                            <?php foreach ($Categories as $cat): ?>
+                                <option value="<?php echo $cat['id']; ?>"><?php echo $cat['title']; ?></option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
+                </div>
 
-            <div class="form-group">
-                <label>دسته بندی</label>
-                <input type="text" name="ProductTitle" placeholder="" required>
-            </div>
+                <div class="form-group">
+                    <label for="BrandProduct">نوع برند</label>
+                    <select id="BrandProduct" name="BrandProduct" required>
+                        <option value="" disabled selected>انتخاب برند...</option>
+                        <!-- حلقه PHP برندها اینجا قرار می‌گیرد -->
+                        <?php if (!empty($Brands)): ?>
+                            <?php foreach ($Brands as $brand): ?>
+                                <option value="<?php echo $brand['id']; ?>"><?php echo $brand['name']; ?></option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
+                </div>
 
-            <div class="form-group">
-                <label>امتیاز</label>
-                <input type="text" name="ProductTitle" placeholder="" required>
-            </div>
+                <div class="form-group">
+                    <label for="ColorProduct">رنگ شاخص</label>
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="ColorProduct" name="ColorProduct" value="#3b82f6">
+                        <span class="color-picker-label">برای تغییر رنگ کلیک کنید</span>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label>موجودی</label>
-                <input type="text" name="ProductTitle" placeholder="" required>
-            </div>
+                <div class="form-group">
+                    <label for="ScoreProduct">امتیاز محصول (۱ تا ۵)</label>
+                    <input type="number" id="ScoreProduct" name="ScoreProduct" min="1" max="5" step="0.1" placeholder="مثلاً: 4.5">
+                </div>
 
-            <div class="form-group">
-                <label>توضیحات</label>
-                <input type="text" name="ProductTitle" placeholder="" required>
-            </div>
+                <div class="form-group full-width">
+                    <label for="ProductImage">عکس محصول</label>
+                    <input type="file" id="ProductImage" name="ProductImage" accept="image/jpeg,image/png,image/webp">
+                    <div class="hint">فرمت‌های مجاز: JPG, PNG, WEBP — حداکثر ۲ مگابایت</div>
+                </div>
 
-            <div class="form-group">
-                <label>نوع برند</label>
-                <input type="text" name="ProductTitle" placeholder="" required>
-            </div>
+                <div class="form-group full-width">
+                    <label for="DescriptionProduct">توضیحات و مشخصات کالا</label>
+                    <textarea id="DescriptionProduct" name="DescriptionProduct" placeholder="ویژگی‌ها، اقلام همراه، و جزئیات تکمیلی..."></textarea>
+                </div>
 
-            <button type="submit" name="btnAddProduct" class="btn">ثبت محصول</button>
+                <button type="submit" name="btnAddProduct" class="btn">ثبت نهایی محصول</button>
+            </div>
         </form>
 
-        <a href="../admin_panel.php" class="back-link">بازگشت به پنل کاربری</a>
+        <a href="../admin_panel.php" class="back-link">← بازگشت به پنل مدیریت</a>
     </div>
 </body>
 
