@@ -39,6 +39,15 @@ class Product
 
         return $stmt->fetch();
     }
+
+    public function BrandName($Name)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM brand WHERE `Name` = ?");
+
+        $stmt->execute([$Name]);
+
+        return $stmt->fetch();
+    }
 }
 
 ?>
