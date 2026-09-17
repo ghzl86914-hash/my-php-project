@@ -30,6 +30,15 @@ class Product
             $BrandID
         ]);
     }
+
+    public function CategoryName($CategoryName)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM category WHERE `CategoryName` = ?");
+
+        $stmt->execute([$CategoryName]);
+
+        return $stmt->fetch();
+    }
 }
 
 ?>
