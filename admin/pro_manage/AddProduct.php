@@ -212,7 +212,7 @@ if (isset($_POST['btnAddProduct'])) {
             <button type="submit" name="btnAddProduct" class="btn">ثبت محصول</button>
         </form>
 
-        <a href="UserPanel.php" class="back-link">بازگشت به پنل کاربری</a>
+        <a href="../admin_panel.php" class="back-link">بازگشت به پنل کاربری</a>
     </div>
 </body>
 
