@@ -58,9 +58,9 @@ class Product
         }
 
         $stmt = $this->pdo->prepare("SELECT * FROM `{$table}`");
-        $stmt->execute([$table]);
+        $stmt->execute();
 
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 }
 
