@@ -80,7 +80,7 @@ if (isset($_POST['btnAddProduct'])) {
     <title>افزودن محصول</title>
     <style>
         body {
-            font-family: yekanbackh;
+            font-family: 'yekanbakh';
             background-color: #f2f4f8;
             direction: rtl;
             margin: 0;
