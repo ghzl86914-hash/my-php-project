@@ -20,13 +20,13 @@ if (isset($_POST['btnAddProduct'])) {
     $Title = trim($_POST['ProductTitle']);
     $Price = trim($_POST['PriceProduct']);
     $ImageName = '';
-    $Color = trim($_POST['ProductColor']);
-    $CategoryID = trim($_POST['CategoryID']);
-    $Score = trim($_POST['Score']);
-    $Stock = trim($_POST['Stock']);
+    $ColorProduct = trim($_POST['ColorProduct']);
+    $CategoryProduct = trim($_POST['CategoryProduct']);
+    $ScoreProduct = trim($_POST['ScoreProduct']);
+    $StockProduct = trim($_POST['StockProduct']);
     $Description = trim($_POST['Description']);
     $Add_Date = trim($_POST['Add_Date']);
-    $BrandID = trim($_POST['BrandID']);
+    $BrandProduct = trim($_POST['BrandProduct']);
 
     // اعتبارسنجی
     if (empty($Title)) {
@@ -393,8 +393,8 @@ if (isset($_POST['btnAddProduct'])) {
                 </div>
 
                 <div class="form-group full-width">
-                    <label for="DescriptionProduct">توضیحات و مشخصات کالا</label>
-                    <textarea id="DescriptionProduct" name="DescriptionProduct" placeholder="ویژگی‌ها، اقلام همراه، و جزئیات تکمیلی..."></textarea>
+                    <label for="Description">توضیحات و مشخصات کالا</label>
+                    <textarea id="Description" name="Description" placeholder="ویژگی‌ها، اقلام همراه، و جزئیات تکمیلی..."></textarea>
                 </div>
 
                 <button type="submit" name="btnAddProduct" class="btn">ثبت نهایی محصول</button>
