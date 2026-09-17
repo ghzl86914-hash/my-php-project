@@ -201,12 +201,12 @@ if (isset($_POST['btnAddProduct'])) {
         <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>عنوان محصول:</label>
-                <input type="text" name="ProductTitle" placeholder="مثلاً: گوشی سامسونگ" required>
+                <input type="text" name="ProductTitle" placeholder="" required>
             </div>
 
             <div class="form-group">
                 <label>قیمت (تومان):</label>
-                <input type="number" name="PriceProduct" placeholder="مثلاً: 15000000" required>
+                <input type="number" name="PriceProduct" placeholder="" required>
             </div>
 
             <div class="form-group">
