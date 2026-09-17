@@ -17,7 +17,7 @@ $Success = false;
 
 try{
     $Categories = $ProductManage->listCB('category');
-    $Brand = $ProductManage->listCB('brand');
+    $Brands = $ProductManage->listCB('brand');
 }
 catch(Exception $e){
     $Errors[] = "خطا در دریافت لیست دسته بندی و برند".$e->getmessage();
