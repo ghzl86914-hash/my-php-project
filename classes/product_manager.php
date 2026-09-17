@@ -31,23 +31,6 @@ class Product
         ]);
     }
 
-    public function CategoryName($CategoryName)
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM category WHERE `CategoryName` = ?");
-
-        $stmt->execute([$CategoryName]);
-
-        return $stmt->fetch();
-    }
-
-    public function BrandName($Name)
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM brand WHERE `Name` = ?");
-
-        $stmt->execute([$Name]);
-
-        return $stmt->fetch();
-    }
     public function ListCB($table)
     {
         $allowed_tables = ['category','brand'];
@@ -58,6 +41,7 @@ class Product
         }
 
         $stmt = $this->pdo->prepare("SELECT * FROM `{$table}`");
+        
         $stmt->execute();
 
         return $stmt->fetchAll();
