@@ -283,7 +283,7 @@
                 <p>لیست و کنترل تمام کالاهای موجود در گالری</p>
             </div>
             <div class="actions-group">
-                <a href="admin_panel.php" class="btn btn-outline">
+                <a href="../admin_panel.php" class="btn btn-outline">
                     <i class="bi bi-arrow-right"></i>
                     داشبورد
                 </a>
