@@ -12,7 +12,6 @@ if (!isset($_SESSION['Login'])) {
 }
 
 
-$CurrentUserName = $_SESSION['Login'];
 $Errors = [];
 $Success = false;
 
@@ -21,6 +20,13 @@ if (isset($_POST['btnAddProduct'])) {
     $Title = trim($_POST['ProductTitle']);
     $Price = trim($_POST['PriceProduct']);
     $ImageName = '';
+    $Color = trim($_POST['ProductColor']);
+    $CategoryID = trim($_POST['CategoryID']);
+    $Score = trim($_POST['Score']);
+    $Stock = trim($_POST['Stock']);
+    $Description = trim($_POST['Description']);
+    $Add_Date = trim($_POST['Add_Date']);
+    $BrandID = trim($_POST['BrandID']);
 
     // اعتبارسنجی
     if (empty($Title)) {
@@ -57,7 +63,7 @@ if (isset($_POST['btnAddProduct'])) {
     if (count($Errors) == 0) {
 
         
-           $resultadd = $ProductManage->AddProduct($CurrentUserName, $Title, $Price, $ImageName);
+           $resultadd = $ProductManage->AddProduct($Title, $Price, $ImageName, $Color, $CategoryID, $Score, $Stock, $Description, $Add_Date, $BrandID);
     }else{
         $Errors[] = "خطا در ذخیره محصول: ";
     }
