@@ -342,7 +342,7 @@ $Errors = [];
                         <tr>
                             <td><strong>#<?= $pro['ProductID']?></strong></td>
                             <td>
-                                <img src="https://via.placeholder.com/60" alt="انگشتر نقره" class="pro-img">
+                                <img src="../../uploads/products <?=$pro['ProductImageName'] ?>" alt="<?=$pro['ProductID']?>" class="pro-img">
                             </td>
                             <td>
                                 <div style="font-weight: 600;">انگشتر نقره مینیمال ماه</div>
