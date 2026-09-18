@@ -340,7 +340,7 @@ $Errors = [];
                         <?php foreach($prolist as $pro):?>
                         
                         <tr>
-                            <td><strong>#<? $pro['ProductID']?></strong></td>
+                            <td><strong>#<?= $pro['ProductID']?></strong></td>
                             <td>
                                 <img src="https://via.placeholder.com/60" alt="انگشتر نقره" class="pro-img">
                             </td>
