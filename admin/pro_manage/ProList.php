@@ -337,6 +337,8 @@ $Errors = [];
                     </thead>
                     <tbody>
                         <!-- نمونه سطر ۱ (در پیاده‌سازی بک‌اند، این سطر داخل حلقه foreach قرار می‌گیرد) -->
+                         <?php foreach($prolist as $pro){
+                            }?>
                         <tr>
                             <td><strong>#101</strong></td>
                             <td>
