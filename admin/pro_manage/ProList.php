@@ -356,9 +356,8 @@ $Errors = [];
                             <td><?=$brandname['Name']?></td>
                             <td>
                                 <span class="pro-color-indicator" style="background:<?=$pro['ProductColor']?>;"></span>
-                                نقره‌ای
                             </td>
-                            <td style="font-weight: 700;">۴۵۰,۰۰۰</td>
+                            <td style="font-weight: 700;"></td>
                             <td><span class="stock-badge stock-in">۱۴ عدد</span></td>
                             <td>
                                 <div class="rating-box">
