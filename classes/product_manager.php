@@ -46,6 +46,13 @@ class Product
 
         return $stmt->fetchAll();
     }
+
+    public function ProList()
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM productattributes");
+
+       return $stmt->execute([]);
+    }
 }
 
 ?>
