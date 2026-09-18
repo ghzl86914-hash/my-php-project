@@ -68,11 +68,20 @@ if (isset($_POST['btnAddProduct'])) {
         }
     }
     // اگر خطایی نبود، ذخیره کن
-    if (count($Errors) == 0) {
-
-        
-           $resultadd = $ProductManage->AddProduct($Title, $Price, $ImageName, $ColorProduct, $CategoryProduct, $ScoreProduct, $StockProduct, $Description, $Add_Date, $BrandProduct);
-    }else{
+    if (count($Errors) == 0) 
+    {
+        $resultadd = $ProductManage->AddProduct($Title, $Price, $ImageName, $ColorProduct, $CategoryProduct, $ScoreProduct, $StockProduct, $Description, $Add_Date, $BrandProduct);
+        if($resultadd === true)
+        {
+            $Success = true;
+        }
+        else
+        {
+            $Errors[] = "خطا در ذخیره محصول: ";
+        }
+    }
+    else
+    {
         $Errors[] = "خطا در ذخیره محصول: ";
     }
             
