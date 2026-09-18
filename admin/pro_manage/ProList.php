@@ -358,11 +358,11 @@ $Errors = [];
                                 <span class="pro-color-indicator" style="background:<?=$pro['ProductColor']?>;"></span>
                             </td>
                             <td style="font-weight: 700;"><?=number_format($pro['PriceProduct'])?></td>
-                            <td><span class="stock-badge stock-in">۱۴ عدد</span></td>
+                            <td><span class="stock-badge stock-in"><?=$pro['Stock'] ?></span></td>
                             <td>
                                 <div class="rating-box">
                                     <i class="bi bi-star-fill"></i>
-                                    <span>4.8</span>
+                                    <span><?=$pro['Stock']  ?></span>
                                 </div>
                             </td>
                             <td style="color: var(--text-muted); font-size: 0.8rem;">1403/06/25</td>
