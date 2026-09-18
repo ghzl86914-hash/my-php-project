@@ -345,7 +345,7 @@ $Errors = [];
                                 <img src="../../uploads/products/<?=$pro['ProductImageName']?>" alt="<?=$pro['ProductID']?>" class="pro-img">
                             </td>
                             <td>
-                                <div style="font-weight: 600;">انگشتر نقره مینیمال ماه</div>
+                                <div style="font-weight: 600;"><?=$pro['ProductTitle']?></div>
                             </td>
                             <td><span class="badge-cat">انگشتر</span></td>
                             <td>برند 4</td>
