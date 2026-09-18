@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+require "../../config/db.php";
+require "../../classes/product_manager.php";
+
+$ProductManage = new  Product($pdo);
+
+if (!isset($_SESSION['Login'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$prolist = $ProductManage->ProList();
+
+$Errors = [];
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
