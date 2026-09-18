@@ -14,6 +14,7 @@ if (!isset($_SESSION['Login'])) {
 
 $Errors = [];
 $Success = false;
+$Add_Date = time();
 
 try{
     $Categories = $ProductManage->listCB('category');
@@ -33,7 +34,6 @@ if (isset($_POST['btnAddProduct'])) {
     $ScoreProduct = trim($_POST['ScoreProduct']);
     $StockProduct = trim($_POST['StockProduct']);
     $Description = trim($_POST['Description']);
-    $Add_Date = trim($_POST['Add_Date']);
     $BrandProduct = trim($_POST['BrandProduct']);
 
     // اعتبارسنجی
