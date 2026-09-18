@@ -59,7 +59,7 @@ if (isset($_POST['btnAddProduct'])) {
         } else {
             $Extension = pathinfo($_FILES['ProductImage']['name'], PATHINFO_EXTENSION);
             $ImageName = time() . '_' . uniqid() . '.' . $Extension;
-            $UploadPath = 'uploads/' . $ImageName;
+            $UploadPath = '../../uploads/products' . $ImageName;
 
             if (!move_uploaded_file($_FILES['ProductImage']['tmp_name'], $UploadPath)) {
                 $Errors[] = "خطا در آپلود عکس";
