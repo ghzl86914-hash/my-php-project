@@ -56,9 +56,11 @@ class Product
         return $stmt->fetchAll();
     }
 
-    public function CatName(CategoryID)
+    public function CatName($CategoryID)
     {
-        $stmt = $this->pdo->prepare("SELECT")
+        $stmt = $this->pdo->prepare("SELECT `CategoryName` FROM `category` WHERE `CategoryID` = ?");
+        $stmt->execute([$CategoryID]);
+        return $stmt->fetch();
     }
 }
 
