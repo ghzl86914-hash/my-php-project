@@ -340,7 +340,7 @@ $Errors = [];
                         <?php foreach($prolist as $pro):?>
                         
                         <?$catname = $ProductManage->CatName($pro['CategoryID']);?>
-                        <?$brandname = $ProductManage->BrandName($pro['$BrandID']);?>
+                        <?$brandname = $ProductManage->BrandName($pro['BrandID']);?>
                         
                         <tr>
                             <td><strong>#<?= $pro['ProductID']?></strong></td>
