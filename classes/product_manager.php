@@ -59,7 +59,18 @@ class Product
     public function CatName($CategoryID)
     {
         $stmt = $this->pdo->prepare("SELECT `CategoryName` FROM `category` WHERE `CategoryID` = ?");
+
         $stmt->execute([$CategoryID]);
+
+        return $stmt->fetch();
+    }
+
+    public function BrandName($BrandID)
+     {
+        $stmt = $this->pdo->prepare("SELECT `Name` FROM `brand` WHERE `BrandID` = ?");
+
+        $stmt->execute([$BrandID]);
+
         return $stmt->fetch();
     }
 }
