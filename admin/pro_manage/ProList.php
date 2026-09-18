@@ -352,7 +352,7 @@ $Errors = [];
                             <td>
                                 <div style="font-weight: 600;"><?=$pro['ProductTitle']?></div>
                             </td>
-                            <td><span class="badge-cat"><?="$catname"?></span></td>
+                            <td><span class="badge-cat">"<?=$catname?>"</span></td>
                             <td>برند 4</td>
                             <td>
                                 <span class="pro-color-indicator" style="background: #e2e8f0;"></span>
