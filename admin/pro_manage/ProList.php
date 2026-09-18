@@ -339,8 +339,10 @@ $Errors = [];
                         <!-- نمونه سطر ۱ (در پیاده‌سازی بک‌اند، این سطر داخل حلقه foreach قرار می‌گیرد) -->
                         <?php foreach($prolist as $pro):?>
                         
-                        <?$catname = $ProductManage->CatName($pro['CategoryID']);?>
-                        <?$brandname = $ProductManage->BrandName($pro['BrandID']);?>
+                        <?php
+                            $catname = $ProductManage->CatName($pro['CategoryID']);
+                            $brandname = $ProductManage->BrandName($pro['BrandID']);
+                        ?>
                         
                         <tr>
                             <td><strong>#<?= $pro['ProductID']?></strong></td>
