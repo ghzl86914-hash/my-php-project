@@ -362,7 +362,7 @@ $Errors = [];
                             <td>
                                 <div class="rating-box">
                                     <i class="bi bi-star-fill"></i>
-                                    <span><?=$pro['Stock']  ?></span>
+                                    <span><?=$pro['Score']  ?></span>
                                 </div>
                             </td>
                             <td style="color: var(--text-muted); font-size: 0.8rem;">1403/06/25</td>
