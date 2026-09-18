@@ -55,6 +55,11 @@ class Product
 
         return $stmt->fetchAll();
     }
+
+    public function CatName(CategoryID)
+    {
+        $stmt = $this->pdo->prepare("SELECT")
+    }
 }
 
 ?>
