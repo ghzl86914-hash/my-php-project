@@ -353,7 +353,7 @@ $Errors = [];
                                 <div style="font-weight: 600;"><?=$pro['ProductTitle']?></div>
                             </td>
                             <td><span class="badge-cat"><?=$catname['CategoryName']?></span></td>
-                            <td>برند 4</td>
+                            <td><?=$brandname['Name']?></td>
                             <td>
                                 <span class="pro-color-indicator" style="background: #e2e8f0;"></span>
                                 نقره‌ای
