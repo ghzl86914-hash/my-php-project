@@ -357,7 +357,7 @@ $Errors = [];
                             <td>
                                 <span class="pro-color-indicator" style="background:<?=$pro['ProductColor']?>;"></span>
                             </td>
-                            <td style="font-weight: 700;"></td>
+                            <td style="font-weight: 700;"><?=$pro['PriceProduct']?></td>
                             <td><span class="stock-badge stock-in">۱۴ عدد</span></td>
                             <td>
                                 <div class="rating-box">
