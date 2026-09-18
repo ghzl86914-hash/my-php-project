@@ -355,7 +355,7 @@ $Errors = [];
                             <td><span class="badge-cat"><?=$catname['CategoryName']?></span></td>
                             <td><?=$brandname['Name']?></td>
                             <td>
-                                <span class="pro-color-indicator" style="background: #e2e8f0;"></span>
+                                <span class="pro-color-indicator" style="background:<?=$pro['ProductColor']?>;"></span>
                                 نقره‌ای
                             </td>
                             <td style="font-weight: 700;">۴۵۰,۰۰۰</td>
