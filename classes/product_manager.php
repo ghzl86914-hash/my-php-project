@@ -49,9 +49,11 @@ class Product
 
     public function ProList()
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM productattributes");
+        $stmt = $this->pdo->prepare("SELECT * FROM product");
 
-       return $stmt->execute([]);
+        $stmt->execute([]);
+
+        return $stmt->fetchAll();
     }
 }
 
