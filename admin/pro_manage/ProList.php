@@ -339,10 +339,8 @@ $Errors = [];
                         <!-- نمونه سطر ۱ (در پیاده‌سازی بک‌اند، این سطر داخل حلقه foreach قرار می‌گیرد) -->
                         <?php foreach($prolist as $pro):?>
                         
-                            
-                        
                         <tr>
-                            <td><strong>#101</strong></td>
+                            <td><strong>#<? $pro['ProductID']?></strong></td>
                             <td>
                                 <img src="https://via.placeholder.com/60" alt="انگشتر نقره" class="pro-img">
                             </td>
